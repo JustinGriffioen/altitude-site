@@ -52,9 +52,9 @@
   --error: 0 84.2% 60.2%;
   --error-foreground: 210 40% 98%;
 
-  /* Typography - Clean & Modern */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  /* Typography - Cool Tech Fonts */
+  --font-sans: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --font-display: 'Orbitron', 'Exo 2', 'Rajdhani', 'Inter', system-ui, sans-serif;
 
   /* Font Sizes */
   --text-xs: 0.75rem;

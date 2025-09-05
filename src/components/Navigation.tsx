@@ -29,8 +29,8 @@ const Navigation = () => {
     <motion.nav 
       className={`sticky top-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-primary-950/95 backdrop-blur-xl shadow-2xl border-b border-primary-600/30' 
-          : 'bg-primary-950/90 backdrop-blur-sm shadow-xl border-b border-primary-500/20'
+          ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b border-slate-700' 
+          : 'bg-slate-900/90 backdrop-blur-sm shadow-xl border-b border-slate-800'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

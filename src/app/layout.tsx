@@ -1,13 +1,21 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk } from 'next/font/google'
+import { Orbitron, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import PerformanceMonitor from '@/components/PerformanceMonitor'
 
-const spaceGrotesk = Space_Grotesk({ 
+const orbitron = Orbitron({ 
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-orbitron',
+  display: 'swap',
+  preload: true,
+  weight: ['400', '500', '600', '700', '800', '900'],
+})
+
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
   display: 'swap',
   preload: true,
   weight: ['300', '400', '500', '600', '700'],
@@ -123,7 +131,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${orbitron.variable} ${jetbrainsMono.variable}`}>
       <head>
         {/* Critical CSS inline */}
         <style dangerouslySetInnerHTML={{
@@ -136,8 +144,8 @@ export default function RootLayout({
               --color-gray-900: #0f172a;
               --color-gray-300: #cbd5e1;
               --color-accent-500: #f97316;
-              --font-sans: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, sans-serif;
-              --font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, -apple-system, sans-serif;
+              --font-sans: var(--font-jetbrains-mono), 'JetBrains Mono', 'Fira Code', monospace;
+              --font-display: var(--font-orbitron), 'Orbitron', 'Exo 2', system-ui, sans-serif;
             }
             * { box-sizing: border-box; }
             html { scroll-behavior: smooth; font-size: 16px; }
