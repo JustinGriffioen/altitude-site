@@ -77,7 +77,7 @@ export default function Home() {
               
                                         <div className="flex flex-col sm:flex-row gap-6">
                             <Button size="lg" className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg">
-                              Start Your Mission
+                              Book a Call
                               <ArrowRight className="ml-2" size={20} />
                             </Button>
                             <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900">

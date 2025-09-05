@@ -4,42 +4,42 @@
 :root {
   /* Modern Color Palette - HSL based for better consistency */
   
-  /* Background & Foreground */
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  /* Background & Foreground - Dark Blue-Grey Theme */
+  --background: 220 25% 8%;
+  --foreground: 0 0% 98%;
   
   /* Card */
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card: 220 25% 12%;
+  --card-foreground: 0 0% 98%;
   
   /* Popover */
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover: 220 25% 12%;
+  --popover-foreground: 0 0% 98%;
   
-  /* Primary - Modern Blue */
-  --primary: 221.2 83.2% 53.3%;
-  --primary-foreground: 210 40% 98%;
+  /* Primary - Bright Blue */
+  --primary: 217 91% 60%;
+  --primary-foreground: 220 25% 8%;
   
-  /* Secondary - Clean Grey */
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222.2 84% 4.9%;
+  /* Secondary - Dark Grey */
+  --secondary: 220 25% 15%;
+  --secondary-foreground: 0 0% 98%;
   
   /* Muted */
-  --muted: 210 40% 96%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 220 25% 15%;
+  --muted-foreground: 220 13% 65%;
   
-  /* Accent - Subtle Blue */
-  --accent: 210 40% 96%;
-  --accent-foreground: 222.2 84% 4.9%;
+  /* Accent - Bright Blue */
+  --accent: 217 91% 60%;
+  --accent-foreground: 220 25% 8%;
   
   /* Destructive */
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 98%;
   
   /* Border & Input */
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
+  --border: 220 25% 20%;
+  --input: 220 25% 20%;
+  --ring: 217 91% 60%;
   
   /* Radius */
   --radius: 0.5rem;
