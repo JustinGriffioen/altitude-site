@@ -9,7 +9,7 @@ export default function CMSDashboard() {
     {
       title: 'Blog Posts',
       description: 'Manage blog content and articles',
-      href: '/cms/blog',
+      href: '/cms/blog/list',
       icon: FileText,
       color: 'from-blue-500 to-blue-600',
       count: 12
@@ -17,7 +17,7 @@ export default function CMSDashboard() {
     {
       title: 'Projects',
       description: 'Manage project case studies and portfolios',
-      href: '/cms/projects',
+      href: '/cms/projects/list',
       icon: FolderOpen,
       color: 'from-green-500 to-green-600',
       count: 8
@@ -25,7 +25,7 @@ export default function CMSDashboard() {
     {
       title: 'Careers',
       description: 'Manage job postings and career content',
-      href: '/cms/careers',
+      href: '/cms/careers/list',
       icon: Briefcase,
       color: 'from-purple-500 to-purple-600',
       count: 5

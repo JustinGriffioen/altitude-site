@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import { SITE_CONFIG, COMPANY_STATS, USE_CASES, TECHNOLOGIES } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 import Card, { CardBody } from '@/components/ui/Card'
@@ -21,6 +22,8 @@ const AnimatedCounter = dynamic(() => import('@/components/ui/AnimatedCounter'),
 })
 
 export default function Home() {
+  const [activeServiceType, setActiveServiceType] = useState<'virtual' | 'onsite'>('virtual')
+
   return (
     <>
       {/* Hero Section */}
@@ -393,6 +396,375 @@ export default function Home() {
                 </div>
               </div>
             </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Types Toggle Section */}
+      <section className="py-24 bg-slate-800 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <div className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600/20 text-blue-300 text-sm font-semibold tracking-wide border border-blue-500/30 mb-6">
+              Flexible Service Delivery
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
+              Choose Your <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Intelligence Service</span> Format
+            </h2>
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
+              Deploy intelligence capabilities in the format that works best for your organization and operational requirements.
+            </p>
+          </ScrollReveal>
+
+          {/* Service Type Toggle */}
+          <div className="flex justify-center mb-12">
+            <div className="bg-slate-700 rounded-2xl p-2 border border-slate-600">
+              <div className="flex relative">
+                <motion.div
+                  className="absolute top-2 bottom-2 bg-blue-600 rounded-xl shadow-lg"
+                  initial={false}
+                  animate={{
+                    x: activeServiceType === 'virtual' ? 0 : '100%',
+                    width: activeServiceType === 'virtual' ? 'calc(50% - 4px)' : 'calc(50% - 4px)'
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+                <button 
+                  onClick={() => setActiveServiceType('virtual')}
+                  className={`relative px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 z-10 ${
+                    activeServiceType === 'virtual' 
+                      ? 'text-white' 
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  Virtual Intelligence
+                </button>
+                <button 
+                  onClick={() => setActiveServiceType('onsite')}
+                  className={`relative px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 z-10 ${
+                    activeServiceType === 'onsite' 
+                      ? 'text-white' 
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  On-Site Operations
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Service Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {activeServiceType === 'virtual' ? (
+              <>
+                {/* Virtual Intelligence Cards */}
+                <ScrollReveal direction="up" delay={0.1}>
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-blue-500 group">
+                    <CardBody className="p-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                          <Settings className="text-white" size={24} />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-blue-300 font-semibold">Virtual</div>
+                          <div className="text-xs text-slate-400">Remote Operations</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-blue-400 transition-colors">
+                        Real-Time Intelligence
+                      </h3>
+                      
+                      <p className="text-slate-200 mb-6 leading-relaxed">
+                        Deploy intelligence capabilities remotely with our secure, cloud-based platform. 
+                        Perfect for distributed teams and rapid response scenarios.
+                      </p>
+                      
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">24/7 Remote Monitoring</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Secure Cloud Infrastructure</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Real-Time Data Fusion</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t border-slate-600">
+                        <div className="text-3xl font-black text-white mb-2">$850</div>
+                        <div className="text-sm text-slate-400 mb-4">Starting at per session</div>
+                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-blue-600 group-hover:text-white font-semibold">
+                          Learn More
+                          <ArrowRight className="ml-2" size={16} />
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </ScrollReveal>
+
+                <ScrollReveal direction="up" delay={0.2}>
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-green-500 group relative">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                      </div>
+                    </div>
+                    <CardBody className="p-8 pt-12">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
+                          <Zap className="text-white" size={24} />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-green-300 font-semibold">Virtual</div>
+                          <div className="text-xs text-slate-400">Live Analysis</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-green-400 transition-colors">
+                        Live Intelligence Briefings
+                      </h3>
+                      
+                      <p className="text-slate-200 mb-6 leading-relaxed">
+                        Interactive virtual briefings with our intelligence analysts. Get real-time 
+                        analysis and recommendations for your operational requirements.
+                      </p>
+                      
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Live Expert Analysis</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Interactive Q&A Sessions</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Custom Intelligence Reports</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t border-slate-600">
+                        <div className="text-3xl font-black text-white mb-2">$1,200</div>
+                        <div className="text-sm text-slate-400 mb-4">Starting at per briefing</div>
+                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-green-600 group-hover:text-white font-semibold">
+                          Learn More
+                          <ArrowRight className="ml-2" size={16} />
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </ScrollReveal>
+
+                <ScrollReveal direction="up" delay={0.3}>
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-purple-500 group">
+                    <CardBody className="p-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
+                          <Layers className="text-white" size={24} />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-purple-300 font-semibold">Virtual</div>
+                          <div className="text-xs text-slate-400">Platform Access</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-purple-400 transition-colors">
+                        Intelligence Platform
+                      </h3>
+                      
+                      <p className="text-slate-200 mb-6 leading-relaxed">
+                        Self-service access to our intelligence platform with advanced analytics, 
+                        data visualization, and automated reporting capabilities.
+                      </p>
+                      
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Self-Service Analytics</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Automated Reports</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">API Integration</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t border-slate-600">
+                        <div className="text-3xl font-black text-white mb-2">$2,500</div>
+                        <div className="text-sm text-slate-400 mb-4">Monthly subscription</div>
+                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-purple-600 group-hover:text-white font-semibold">
+                          Learn More
+                          <ArrowRight className="ml-2" size={16} />
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </ScrollReveal>
+              </>
+            ) : (
+              <>
+                {/* On-Site Operations Cards */}
+                <ScrollReveal direction="up" delay={0.1}>
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-blue-500 group">
+                    <CardBody className="p-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                          <Shield className="text-white" size={24} />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-blue-300 font-semibold">On-Site</div>
+                          <div className="text-xs text-slate-400">Field Deployment</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-blue-400 transition-colors">
+                        Deployed Intelligence
+                      </h3>
+                      
+                      <p className="text-slate-200 mb-6 leading-relaxed">
+                        Our expert analysts deploy directly to your location with specialized equipment 
+                        and real-time intelligence capabilities for mission-critical operations.
+                      </p>
+                      
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Expert Field Analysts</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Specialized Equipment</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Direct Integration</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t border-slate-600">
+                        <div className="text-3xl font-black text-white mb-2">$1,450</div>
+                        <div className="text-sm text-slate-400 mb-4">Starting at per deployment</div>
+                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-blue-600 group-hover:text-white font-semibold">
+                          Learn More
+                          <ArrowRight className="ml-2" size={16} />
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </ScrollReveal>
+
+                <ScrollReveal direction="up" delay={0.2}>
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-green-500 group relative">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                      </div>
+                    </div>
+                    <CardBody className="p-8 pt-12">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
+                          <MapPin className="text-white" size={24} />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-green-300 font-semibold">On-Site</div>
+                          <div className="text-xs text-slate-400">Strategic Location</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-green-400 transition-colors">
+                        Strategic Intelligence Hub
+                      </h3>
+                      
+                      <p className="text-slate-200 mb-6 leading-relaxed">
+                        Establish a dedicated intelligence operations center at your facility with 
+                        our team of analysts and cutting-edge technology infrastructure.
+                      </p>
+                      
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Dedicated Operations Center</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">24/7 On-Site Team</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Custom Infrastructure</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t border-slate-600">
+                        <div className="text-3xl font-black text-white mb-2">$5,000</div>
+                        <div className="text-sm text-slate-400 mb-4">Monthly setup</div>
+                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-green-600 group-hover:text-white font-semibold">
+                          Learn More
+                          <ArrowRight className="ml-2" size={16} />
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </ScrollReveal>
+
+                <ScrollReveal direction="up" delay={0.3}>
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-purple-500 group">
+                    <CardBody className="p-8">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
+                          <Layers className="text-white" size={24} />
+                        </div>
+                        <div className="text-right">
+                          <div className="text-sm text-purple-300 font-semibold">On-Site</div>
+                          <div className="text-xs text-slate-400">Training & Support</div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-purple-400 transition-colors">
+                        Intelligence Training
+                      </h3>
+                      
+                      <p className="text-slate-200 mb-6 leading-relaxed">
+                        Comprehensive on-site training programs to build your team's intelligence 
+                        capabilities and establish best practices for ongoing operations.
+                      </p>
+                      
+                      <div className="space-y-3 mb-6">
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Hands-On Training</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Certification Programs</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <span className="text-sm text-slate-300">Ongoing Support</span>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 pt-6 border-t border-slate-600">
+                        <div className="text-3xl font-black text-white mb-2">$3,500</div>
+                        <div className="text-sm text-slate-400 mb-4">Per training program</div>
+                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-purple-600 group-hover:text-white font-semibold">
+                          Learn More
+                          <ArrowRight className="ml-2" size={16} />
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </ScrollReveal>
+              </>
+            )}
           </div>
         </div>
       </section>

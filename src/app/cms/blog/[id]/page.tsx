@@ -1,0 +1,448 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useParams, useRouter } from 'next/navigation'
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import Placeholder from '@tiptap/extension-placeholder'
+import TextStyle from '@tiptap/extension-text-style'
+import Color from '@tiptap/extension-color'
+import TextAlign from '@tiptap/extension-text-align'
+import Underline from '@tiptap/extension-underline'
+import Link from '@tiptap/extension-link'
+import { 
+  Bold, 
+  Italic, 
+  Underline as UnderlineIcon, 
+  Strikethrough, 
+  Code, 
+  Heading1, 
+  Heading2, 
+  Heading3, 
+  List, 
+  ListOrdered, 
+  Quote, 
+  Undo, 
+  Redo,
+  Link as LinkIcon,
+  Unlink,
+  Save,
+  ArrowLeft,
+  Trash2,
+  Eye,
+  EyeOff
+} from 'lucide-react'
+import { motion } from 'framer-motion'
+
+export default function EditBlogPost() {
+  const params = useParams()
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true)
+  const [isSaving, setIsSaving] = useState(false)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [postData, setPostData] = useState({
+    title: '',
+    excerpt: '',
+    slug: '',
+    content: '',
+    status: 'draft',
+    publishedAt: ''
+  })
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Placeholder.configure({
+        placeholder: 'Start writing your blog post...',
+      }),
+      TextStyle,
+      Color,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
+      Underline,
+      Link.configure({
+        openOnClick: false,
+        HTMLAttributes: {
+          class: 'text-blue-400 underline',
+        },
+      }),
+    ],
+    content: postData.content,
+    editorProps: {
+      attributes: {
+        class: 'prose prose-invert max-w-none focus:outline-none min-h-[400px] p-6',
+      },
+    },
+  })
+
+  useEffect(() => {
+    if (params.id && params.id !== 'new') {
+      loadPost()
+    } else {
+      setIsLoading(false)
+    }
+  }, [params.id])
+
+  useEffect(() => {
+    if (editor && postData.content) {
+      editor.commands.setContent(postData.content)
+    }
+  }, [editor, postData.content])
+
+  const loadPost = async () => {
+    try {
+      // Here you would fetch from your database
+      // For now, we'll simulate loading
+      const mockPost = {
+        id: params.id,
+        title: 'Sample Blog Post',
+        excerpt: 'This is a sample blog post excerpt',
+        slug: 'sample-blog-post',
+        content: '<p>This is the content of the blog post...</p>',
+        status: 'draft',
+        publishedAt: new Date().toISOString()
+      }
+      
+      setPostData(mockPost)
+    } catch (error) {
+      console.error('Error loading post:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleSave = async () => {
+    if (!editor || !postData.title.trim()) return
+    
+    setIsSaving(true)
+    try {
+      const content = editor.getHTML()
+      const updatedPost = {
+        ...postData,
+        content,
+        slug: postData.slug || postData.title.toLowerCase().replace(/\s+/g, '-'),
+        updatedAt: new Date().toISOString()
+      }
+      
+      // Here you would save to your database
+      console.log('Saving post:', updatedPost)
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      alert('Blog post saved successfully!')
+    } catch (error) {
+      console.error('Error saving post:', error)
+      alert('Error saving blog post')
+    } finally {
+      setIsSaving(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    if (!confirm('Are you sure you want to delete this blog post?')) return
+    
+    setIsDeleting(true)
+    try {
+      // Here you would delete from your database
+      console.log('Deleting post:', params.id)
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      alert('Blog post deleted successfully!')
+      router.push('/cms/blog')
+    } catch (error) {
+      console.error('Error deleting post:', error)
+      alert('Error deleting blog post')
+    } finally {
+      setIsDeleting(false)
+    }
+  }
+
+  const toggleStatus = () => {
+    setPostData(prev => ({
+      ...prev,
+      status: prev.status === 'draft' ? 'published' : 'draft',
+      publishedAt: prev.status === 'draft' ? new Date().toISOString() : prev.publishedAt
+    }))
+  }
+
+  const setLink = () => {
+    const url = window.prompt('Enter URL:')
+    if (url) {
+      editor?.chain().focus().setLink({ href: url }).run()
+    }
+  }
+
+  const unsetLink = () => {
+    editor?.chain().focus().unsetLink().run()
+  }
+
+  if (isLoading) {
+    return <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="text-white">Loading post...</div>
+    </div>
+  }
+
+  if (!editor) {
+    return <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+      <div className="text-white">Loading editor...</div>
+    </div>
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <motion.div 
+          className="mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <button 
+                onClick={() => router.back()}
+                className="text-slate-400 hover:text-white transition-colors"
+              >
+                <ArrowLeft size={20} />
+              </button>
+              <h1 className="text-3xl font-bold font-display">
+                {params.id === 'new' ? 'New Blog Post' : 'Edit Blog Post'}
+              </h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={toggleStatus}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center ${
+                  postData.status === 'published' 
+                    ? 'bg-green-600 hover:bg-green-700 text-white' 
+                    : 'bg-yellow-600 hover:bg-yellow-700 text-white'
+                }`}
+              >
+                {postData.status === 'published' ? <Eye className="mr-2" size={16} /> : <EyeOff className="mr-2" size={16} />}
+                {postData.status === 'published' ? 'Published' : 'Draft'}
+              </button>
+              {params.id !== 'new' && (
+                <button
+                  onClick={handleDelete}
+                  disabled={isDeleting}
+                  className="bg-red-600 hover:bg-red-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"
+                >
+                  <Trash2 className="mr-2" size={16} />
+                  {isDeleting ? 'Deleting...' : 'Delete'}
+                </button>
+              )}
+              <button
+                onClick={handleSave}
+                disabled={isSaving || !postData.title.trim()}
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+              >
+                <Save className="mr-2" size={16} />
+                {isSaving ? 'Saving...' : 'Save Post'}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Main Editor */}
+          <div className="lg:col-span-3">
+            <div className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden">
+              {/* Toolbar */}
+              <div className="border-b border-slate-700 p-4 bg-slate-800">
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    onClick={() => editor.chain().focus().toggleBold().run()}
+                    className={`p-2 rounded ${editor.isActive('bold') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Bold size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleItalic().run()}
+                    className={`p-2 rounded ${editor.isActive('italic') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Italic size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleUnderline().run()}
+                    className={`p-2 rounded ${editor.isActive('underline') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <UnderlineIcon size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleStrike().run()}
+                    className={`p-2 rounded ${editor.isActive('strike') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Strikethrough size={16} />
+                  </button>
+                  
+                  <div className="w-px h-6 bg-slate-600 mx-2" />
+                  
+                  <button
+                    onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+                    className={`p-2 rounded ${editor.isActive('heading', { level: 1 }) ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Heading1 size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+                    className={`p-2 rounded ${editor.isActive('heading', { level: 2 }) ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Heading2 size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+                    className={`p-2 rounded ${editor.isActive('heading', { level: 3 }) ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Heading3 size={16} />
+                  </button>
+                  
+                  <div className="w-px h-6 bg-slate-600 mx-2" />
+                  
+                  <button
+                    onClick={() => editor.chain().focus().toggleBulletList().run()}
+                    className={`p-2 rounded ${editor.isActive('bulletList') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <List size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                    className={`p-2 rounded ${editor.isActive('orderedList') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <ListOrdered size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleBlockquote().run()}
+                    className={`p-2 rounded ${editor.isActive('blockquote') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Quote size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+                    className={`p-2 rounded ${editor.isActive('codeBlock') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <Code size={16} />
+                  </button>
+                  
+                  <div className="w-px h-6 bg-slate-600 mx-2" />
+                  
+                  <button
+                    onClick={setLink}
+                    className={`p-2 rounded ${editor.isActive('link') ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-700'}`}
+                  >
+                    <LinkIcon size={16} />
+                  </button>
+                  <button
+                    onClick={unsetLink}
+                    className="p-2 rounded text-slate-300 hover:bg-slate-700"
+                  >
+                    <Unlink size={16} />
+                  </button>
+                  
+                  <div className="w-px h-6 bg-slate-600 mx-2" />
+                  
+                  <button
+                    onClick={() => editor.chain().focus().undo().run()}
+                    className="p-2 rounded text-slate-300 hover:bg-slate-700"
+                  >
+                    <Undo size={16} />
+                  </button>
+                  <button
+                    onClick={() => editor.chain().focus().redo().run()}
+                    className="p-2 rounded text-slate-300 hover:bg-slate-700"
+                  >
+                    <Redo size={16} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Editor Content */}
+              <div className="p-6">
+                <EditorContent editor={editor} />
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Post Details */}
+            <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+              <h3 className="text-lg font-bold text-white mb-4 font-display">Post Details</h3>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Title</label>
+                  <input
+                    type="text"
+                    value={postData.title}
+                    onChange={(e) => setPostData(prev => ({ ...prev, title: e.target.value }))}
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter post title"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Excerpt</label>
+                  <textarea
+                    value={postData.excerpt}
+                    onChange={(e) => setPostData(prev => ({ ...prev, excerpt: e.target.value }))}
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 h-20 resize-none"
+                    placeholder="Brief description of the post"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Slug</label>
+                  <input
+                    type="text"
+                    value={postData.slug}
+                    onChange={(e) => setPostData(prev => ({ ...prev, slug: e.target.value }))}
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="url-friendly-slug"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Status */}
+            <div className="bg-slate-800 rounded-2xl p-6 border border-slate-700">
+              <h3 className="text-lg font-bold text-white mb-4 font-display">Status</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-300">Status</span>
+                  <span className={`px-2 py-1 text-xs rounded-full ${
+                    postData.status === 'published' 
+                      ? 'bg-green-600 text-green-100' 
+                      : 'bg-yellow-600 text-yellow-100'
+                  }`}>
+                    {postData.status}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-300">Word Count</span>
+                  <span className="text-white">{editor.storage.characterCount?.words() || 0}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-300">Characters</span>
+                  <span className="text-white">{editor.storage.characterCount?.characters() || 0}</span>
+                </div>
+                {postData.publishedAt && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-300">Published</span>
+                    <span className="text-white text-sm">
+                      {new Date(postData.publishedAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
