@@ -19,7 +19,7 @@ const Footer = () => {
     ],
     company: [
       { name: 'About Us', href: '/about' },
-      { name: 'Case Studies', href: '/case-studies' },
+      { name: 'Projects', href: '/projects' },
       { name: 'Careers', href: '/careers' },
       { name: 'Contact', href: '/contact' },
     ],
@@ -33,7 +33,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-tactical-900 text-white">
+    <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -166,14 +166,14 @@ const Footer = () => {
               ))}
             </ul>
             
-            <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg p-6 border border-primary-500/30">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-6 border border-blue-500/30">
               <h5 className="font-black mb-2 text-lg uppercase tracking-wide">Ready to get started?</h5>
-              <p className="text-sm text-primary-100 mb-4 font-medium">
+              <p className="text-sm text-blue-100 mb-4 font-medium">
                 Book a free consultation with our intelligence team.
               </p>
               <Link 
                 href="/contact"
-                className="bg-white text-primary-600 px-6 py-3 rounded-lg font-black text-sm hover:bg-gray-100 transition-colors inline-flex items-center uppercase tracking-wide shadow-lg"
+                className="bg-white text-blue-600 px-6 py-3 rounded-lg font-black text-sm hover:bg-gray-100 transition-colors inline-flex items-center uppercase tracking-wide shadow-lg"
               >
                 Book a Call
                 <ArrowRight className="ml-2" size={16} />
@@ -184,7 +184,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <motion.div 
-          className="border-t border-primary-600/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+          className="border-t border-slate-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}

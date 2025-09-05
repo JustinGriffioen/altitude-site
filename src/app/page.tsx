@@ -295,6 +295,108 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blog & Projects Overview */}
+      <section className="py-24 bg-slate-800 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              Latest <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Insights</span> & <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Projects</span>
+            </h2>
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto">
+              Stay updated with the latest intelligence trends, case studies, and insights from our team of experts.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Blog Section */}
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="bg-slate-700 rounded-2xl p-8 border border-slate-600">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                    <BarChart3 className="text-white" size={20} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">Latest Blog Posts</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="border-l-4 border-blue-500 pl-4">
+                    <h4 className="text-lg font-semibold text-white mb-2">OSINT Trends 2024: What's Next in Open Source Intelligence</h4>
+                    <p className="text-slate-300 text-sm mb-3">Explore the latest developments in OSINT technology and methodologies that are shaping the future of intelligence gathering.</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-slate-400">December 2024</span>
+                      <Link href="/blog/osint-trends-2024" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                        Read More →
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="border-l-4 border-green-500 pl-4">
+                    <h4 className="text-lg font-semibold text-white mb-2">GEOINT Analysis: Satellite Imagery Processing Techniques</h4>
+                    <p className="text-slate-300 text-sm mb-3">Learn about advanced satellite imagery analysis methods used in modern intelligence operations.</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-slate-400">November 2024</span>
+                      <Link href="/blog" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                        Read More →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-slate-600">
+                  <Link href="/blog" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    View All Posts
+                    <ArrowRight className="ml-2" size={16} />
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Projects Section */}
+            <ScrollReveal direction="right" delay={0.4}>
+              <div className="bg-slate-700 rounded-2xl p-8 border border-slate-600">
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                    <Shield className="text-white" size={20} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">Recent Projects</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="border-l-4 border-orange-500 pl-4">
+                    <h4 className="text-lg font-semibold text-white mb-2">Border Security Enhancement - Mexico-US Border</h4>
+                    <p className="text-slate-300 text-sm mb-3">Deployed multi-source intelligence fusion to identify smuggling routes and staging areas in remote desert regions.</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-slate-400">Defense & Security</span>
+                      <Link href="/projects" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                        View Details →
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="border-l-4 border-purple-500 pl-4">
+                    <h4 className="text-lg font-semibold text-white mb-2">Maritime Domain Awareness - Gulf of Aden</h4>
+                    <p className="text-slate-300 text-sm mb-3">Implemented RF signal detection and satellite imagery analysis to track dark vessels in high-risk waters.</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-slate-400">Maritime Security</span>
+                      <Link href="/projects" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                        View Details →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-slate-600">
+                  <Link href="/projects" className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                    View All Projects
+                    <ArrowRight className="ml-2" size={16} />
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Technology & Capabilities */}
       <section className="py-24 bg-primary-800 relative">
         {/* Background Image */}
