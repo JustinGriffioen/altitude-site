@@ -17,9 +17,20 @@ import {
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+interface BlogPost {
+  id: string
+  title: string
+  excerpt: string
+  slug: string
+  status: string
+  publishedAt: string | null
+  updatedAt: string
+  wordCount: number
+}
+
 export default function BlogList() {
   const router = useRouter()
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState<BlogPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')

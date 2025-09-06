@@ -18,9 +18,21 @@ import {
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+interface Project {
+  id: string
+  title: string
+  client: string
+  sector: string
+  duration: string
+  status: string
+  publishedAt: string | null
+  updatedAt: string
+  results: number
+}
+
 export default function ProjectsList() {
   const router = useRouter()
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState<Project[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')

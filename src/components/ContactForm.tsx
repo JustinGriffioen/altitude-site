@@ -146,7 +146,7 @@ export default function ContactForm() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
                     Full Name *
@@ -179,7 +179,7 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2">
                     Company

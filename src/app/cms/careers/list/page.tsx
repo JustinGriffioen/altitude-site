@@ -19,9 +19,24 @@ import {
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+interface JobPosting {
+  id: string
+  title: string
+  department: string
+  location: string
+  type: string
+  salary: string
+  experience: string
+  status: string
+  publishedAt: string | null
+  updatedAt: string
+  requirements: number
+  responsibilities: number
+}
+
 export default function CareersList() {
   const router = useRouter()
-  const [jobs, setJobs] = useState([])
+  const [jobs, setJobs] = useState<JobPosting[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')

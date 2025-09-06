@@ -255,7 +255,7 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {USE_CASES.slice(0, 6).map((useCase, index) => (
               <ScrollReveal key={useCase.id} direction="up" delay={index * 0.1}>
                 <Card className="h-full hover:shadow-2xl transition-all duration-300 group bg-slate-800 border-2 border-slate-700 hover:border-blue-500">
@@ -453,7 +453,7 @@ export default function Home() {
           </div>
 
           {/* Service Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeServiceType === 'virtual' ? (
               <>
                 {/* Virtual Intelligence Cards */}
@@ -798,7 +798,7 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {[
               {
                 title: 'Real-Time Processing',
@@ -882,7 +882,7 @@ export default function Home() {
                   </select>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Full Name *
@@ -986,7 +986,7 @@ export default function Home() {
             </div>
             
             {/* Trust Indicators */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-4xl font-black text-white mb-2 font-display">
                   <AnimatedCounter end={150} suffix="+" duration={2} />

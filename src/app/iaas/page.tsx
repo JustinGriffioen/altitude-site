@@ -88,7 +88,7 @@ export default function IAAS() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: 'Illicit Cross-Border Activity Monitoring',
@@ -180,7 +180,7 @@ export default function IAAS() {
             <h2 className="text-4xl font-bold text-slate-900 mb-4">OUR EXPERIENCE</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             {[
               {
                 number: '100+',
@@ -226,7 +226,7 @@ export default function IAAS() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: Clock,
