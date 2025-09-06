@@ -72,11 +72,11 @@ export const SERVICES = {
 
 // Company stats
 export const COMPANY_STATS = {
-  productsDelivered: 150,
-  activeTheaters: 8,
+  productsDelivered: 100,
+  activeTheaters: 5,
   responseTime: 24,
-  clientCountries: 12,
-  yearsExperience: 15
+  clientCountries: 3,
+  yearsExperience: 5
 }
 
 // Use cases
@@ -158,6 +158,19 @@ export const USE_CASES = [
       'Change detection analysis'
     ],
     sectors: ['Defense', 'Intelligence', 'International Organizations']
+  },
+  {
+    id: 'agriculture-forestry',
+    title: 'Agriculture & Forestry Intelligence',
+    description: 'Remote sensing and satellite monitoring for agricultural productivity, forest health, and environmental monitoring',
+    icon: 'TreePine',
+    features: [
+      'Crop monitoring and yield prediction',
+      'Forest health assessment',
+      'Drought and flood detection',
+      'Environmental change tracking'
+    ],
+    sectors: ['Agriculture', 'Forestry', 'Environmental', 'Government']
   }
 ]
 

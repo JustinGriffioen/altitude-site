@@ -12,14 +12,6 @@ export interface ServiceData {
     icon: string
     features: string[]
   }[]
-  pricing: {
-    title: string
-    price: string
-    period: string
-    description: string
-    features: string[]
-    popular?: boolean
-  }[]
 }
 
 export interface UseCaseData {
@@ -72,30 +64,6 @@ export const servicesData: ServiceData[] = [
         features: ['Forum Monitoring', 'Threat Actor Tracking', 'Market Analysis', 'Cryptocurrency Tracking']
       }
     ],
-    pricing: [
-      {
-        title: 'Basic OSINT',
-        price: '$850',
-        period: 'per session',
-        description: 'Essential OSINT analysis for standard intelligence requirements.',
-        features: ['Social Media Analysis', 'News Source Monitoring', 'Basic Public Records Search', 'Standard Report Delivery', '48-hour Turnaround']
-      },
-      {
-        title: 'Advanced OSINT',
-        price: '$1,450',
-        period: 'per analysis',
-        description: 'Comprehensive OSINT with advanced analytics and deep-dive research.',
-        features: ['Multi-Platform Social Intelligence', 'Dark Web Monitoring', 'Advanced Public Records Research', 'Custom Analytics Dashboard', '24-hour Turnaround', 'Expert Analyst Consultation'],
-        popular: true
-      },
-      {
-        title: 'Enterprise OSINT',
-        price: 'Custom',
-        period: 'monthly',
-        description: 'Dedicated OSINT team with continuous monitoring and real-time intelligence.',
-        features: ['24/7 Continuous Monitoring', 'Dedicated OSINT Team', 'Real-Time Intelligence Alerts', 'Custom Intelligence Platform', 'Priority Support', 'Unlimited Analysis Requests']
-      }
-    ]
   },
   {
     id: 'geoint',
@@ -103,7 +71,7 @@ export const servicesData: ServiceData[] = [
     description: 'Geospatial Intelligence using satellite imagery, mapping data, and location-based intelligence.',
     heroDescription: 'Advanced satellite imagery analysis, geographic intelligence, and spatial data fusion to deliver critical location-based intelligence for mission-critical operations.',
     icon: 'MapPin',
-    color: 'green',
+    color: 'blue',
     features: ['Satellite Imagery Analysis', 'Geographic Intelligence', 'Location Tracking', 'Spatial Data Fusion'],
     capabilities: [
       {
@@ -130,30 +98,6 @@ export const servicesData: ServiceData[] = [
         icon: 'MapPin',
         features: ['Real-Time Tracking', 'Historical Analysis', 'Pattern Recognition', 'Predictive Modeling']
       }
-    ],
-    pricing: [
-      {
-        title: 'Basic GEOINT',
-        price: '$1,200',
-        period: 'per analysis',
-        description: 'Standard satellite imagery analysis and geographic intelligence.',
-        features: ['Single Image Analysis', 'Basic Change Detection', 'Standard Report', '48-hour Turnaround']
-      },
-      {
-        title: 'Advanced GEOINT',
-        price: '$2,500',
-        period: 'per analysis',
-        description: 'Comprehensive geospatial intelligence with advanced analytics.',
-        features: ['Multi-Spectral Analysis', 'Temporal Change Detection', 'Custom Analytics Dashboard', '24-hour Turnaround', 'Expert Consultation'],
-        popular: true
-      },
-      {
-        title: 'Enterprise GEOINT',
-        price: 'Custom',
-        period: 'monthly',
-        description: 'Continuous GEOINT monitoring and real-time intelligence delivery.',
-        features: ['24/7 Monitoring', 'Real-Time Alerts', 'Custom Intelligence Platform', 'Dedicated GEOINT Team', 'Unlimited Analysis']
-      }
     ]
   },
   {
@@ -162,7 +106,7 @@ export const servicesData: ServiceData[] = [
     description: 'Radio Frequency signal detection, analysis, and intelligence gathering from electromagnetic sources.',
     heroDescription: 'Advanced RF signal detection, analysis, and intelligence gathering from electromagnetic sources for mission-critical operations and threat assessment.',
     icon: 'Radio',
-    color: 'purple',
+    color: 'blue',
     features: ['Signal Detection', 'RF Spectrum Analysis', 'Communication Intercepts', 'Electronic Warfare Support'],
     capabilities: [
       {
@@ -190,30 +134,6 @@ export const servicesData: ServiceData[] = [
         features: ['Jamming Analysis', 'Countermeasures', 'Threat Assessment', 'Vulnerability Analysis']
       }
     ],
-    pricing: [
-      {
-        title: 'Basic RF Analysis',
-        price: '$1,450',
-        period: 'per deployment',
-        description: 'Standard RF signal detection and basic analysis services.',
-        features: ['Single Location Analysis', 'Basic Signal Detection', 'Standard Report', '48-hour Turnaround']
-      },
-      {
-        title: 'Advanced RF Intelligence',
-        price: '$2,800',
-        period: 'per deployment',
-        description: 'Comprehensive RF intelligence with advanced equipment and analysis.',
-        features: ['Multi-Location Analysis', 'Advanced Signal Processing', 'Custom Analytics Dashboard', '24-hour Turnaround', 'Expert RF Team'],
-        popular: true
-      },
-      {
-        title: 'Enterprise RF Operations',
-        price: 'Custom',
-        period: 'monthly',
-        description: 'Continuous RF monitoring and real-time intelligence operations.',
-        features: ['24/7 RF Monitoring', 'Real-Time Alerts', 'Dedicated RF Team', 'Custom Equipment', 'Unlimited Analysis']
-      }
-    ]
   },
   {
     id: 'virtual-intelligence',
@@ -248,30 +168,6 @@ export const servicesData: ServiceData[] = [
         icon: 'Zap',
         features: ['Live Processing', 'Instant Updates', 'Dynamic Reports', 'Collaborative Analysis']
       }
-    ],
-    pricing: [
-      {
-        title: 'Basic Virtual',
-        price: '$850',
-        period: 'per session',
-        description: 'Essential virtual intelligence services for standard requirements.',
-        features: ['Cloud Access', 'Basic Monitoring', 'Standard Briefings', '48-hour Support']
-      },
-      {
-        title: 'Advanced Virtual',
-        price: '$1,200',
-        period: 'per briefing',
-        description: 'Comprehensive virtual intelligence with advanced capabilities.',
-        features: ['Advanced Analytics', 'Custom Dashboards', 'Expert Briefings', '24-hour Support', 'Priority Access'],
-        popular: true
-      },
-      {
-        title: 'Enterprise Virtual',
-        price: '$2,500',
-        period: 'monthly',
-        description: 'Full virtual intelligence platform with unlimited access.',
-        features: ['Unlimited Access', 'Dedicated Team', 'Custom Platform', '24/7 Support', 'API Integration']
-      }
     ]
   },
   {
@@ -280,7 +176,7 @@ export const servicesData: ServiceData[] = [
     description: 'Deployed intelligence teams with specialized equipment for mission-critical field operations.',
     heroDescription: 'Our expert analysts deploy directly to your location with specialized equipment and real-time intelligence capabilities for mission-critical operations.',
     icon: 'Shield',
-    color: 'green',
+    color: 'blue',
     features: ['Field Deployment', 'Specialized Equipment', 'Direct Integration', '24/7 On-Site Support'],
     capabilities: [
       {
@@ -307,30 +203,6 @@ export const servicesData: ServiceData[] = [
         icon: 'Clock',
         features: ['Continuous Coverage', 'Rapid Response', 'Local Support', 'Emergency Protocols']
       }
-    ],
-    pricing: [
-      {
-        title: 'Basic On-Site',
-        price: '$1,450',
-        period: 'per deployment',
-        description: 'Standard on-site intelligence deployment.',
-        features: ['Single Analyst', 'Basic Equipment', 'Standard Support', '48-hour Deployment']
-      },
-      {
-        title: 'Advanced On-Site',
-        price: '$2,800',
-        period: 'per deployment',
-        description: 'Comprehensive on-site intelligence with advanced capabilities.',
-        features: ['Expert Team', 'Advanced Equipment', 'Custom Integration', '24-hour Deployment', 'Priority Support'],
-        popular: true
-      },
-      {
-        title: 'Enterprise On-Site',
-        price: '$5,000',
-        period: 'monthly',
-        description: 'Dedicated on-site intelligence operations center.',
-        features: ['Dedicated Team', 'Custom Equipment', 'Full Integration', '24/7 Operations', 'Unlimited Support']
-      }
     ]
   }
 ]
@@ -342,7 +214,7 @@ export const useCasesData: UseCaseData[] = [
     description: 'Comprehensive intelligence solutions for border security operations, including illegal crossing detection, smuggling route analysis, and threat assessment.',
     heroDescription: 'Advanced intelligence solutions for border security operations, providing real-time monitoring, threat detection, and operational support for protecting national borders.',
     icon: 'Shield',
-    color: 'red',
+    color: 'blue',
     sectors: ['Defense', 'Security', 'Law Enforcement'],
     features: ['Illegal Crossing Detection', 'Smuggling Route Analysis', 'Threat Assessment', 'Real-Time Monitoring'],
     challenge: 'Border security operations require continuous monitoring of vast areas, detection of illegal activities, and rapid response to emerging threats while maintaining operational security.',
@@ -380,7 +252,7 @@ export const useCasesData: UseCaseData[] = [
     description: 'Rapid intelligence deployment for crisis situations, natural disasters, and emergency response operations worldwide.',
     heroDescription: 'Rapid intelligence deployment for crisis situations, natural disasters, and emergency response operations worldwide, providing critical situational awareness when seconds count.',
     icon: 'AlertTriangle',
-    color: 'orange',
+    color: 'blue',
     sectors: ['Humanitarian', 'Emergency Response', 'Government'],
     features: ['Rapid Deployment', 'Situational Awareness', 'Resource Allocation', 'Emergency Response'],
     challenge: 'Crisis situations require rapid intelligence gathering and analysis to support emergency response operations, resource allocation, and public safety decisions.',
@@ -399,7 +271,7 @@ export const useCasesData: UseCaseData[] = [
     description: 'Intelligence services for corporate security, threat assessment, and risk mitigation for business operations.',
     heroDescription: 'Comprehensive intelligence services for corporate security, threat assessment, and risk mitigation to protect business operations and personnel worldwide.',
     icon: 'Building',
-    color: 'purple',
+    color: 'blue',
     sectors: ['Commercial', 'Corporate Security', 'Risk Management'],
     features: ['Threat Assessment', 'Risk Mitigation', 'Corporate Security', 'Business Intelligence'],
     challenge: 'Corporate operations face diverse threats including cyber attacks, physical security risks, competitive intelligence, and geopolitical instability affecting business operations.',
@@ -437,7 +309,7 @@ export const useCasesData: UseCaseData[] = [
     description: 'Rapid intelligence deployment for natural disasters, emergency situations, and crisis response operations worldwide.',
     heroDescription: 'Rapid intelligence deployment for natural disasters, emergency situations, and crisis response operations worldwide, providing critical situational awareness when seconds count.',
     icon: 'AlertTriangle',
-    color: 'orange',
+    color: 'blue',
     sectors: ['Humanitarian', 'Emergency Response', 'Government'],
     features: ['Rapid Deployment', 'Situational Awareness', 'Resource Allocation', 'Emergency Response'],
     challenge: 'Disaster situations require rapid intelligence gathering and analysis to support emergency response operations, resource allocation, and public safety decisions.',
@@ -449,5 +321,24 @@ export const useCasesData: UseCaseData[] = [
       'Improved resource allocation and decision-making'
     ],
     technologies: ['OSINT', 'GEOINT', 'Social Media Monitoring', 'Real-Time Analysis', 'Crisis Communication']
+  },
+  {
+    id: 'agriculture-forestry',
+    title: 'Agriculture & Forestry Intelligence',
+    description: 'Advanced remote sensing and satellite monitoring for agricultural productivity, forest health, and environmental monitoring using cutting-edge intelligence technologies.',
+    heroDescription: 'Comprehensive remote sensing and satellite monitoring solutions for agricultural productivity, forest health, and environmental monitoring, delivering actionable intelligence for sustainable land management and resource optimization.',
+    icon: 'TreePine',
+    color: 'blue',
+    sectors: ['Agriculture', 'Forestry', 'Environmental', 'Government'],
+    features: ['Remote Sensing Analysis', 'Crop Monitoring', 'Forest Health Assessment', 'Environmental Monitoring'],
+    challenge: 'Agricultural and forestry operations require continuous monitoring of vast areas, early detection of environmental changes, and accurate assessment of crop health and forest conditions to optimize productivity and sustainability.',
+    solution: 'Our agriculture and forestry intelligence solutions leverage advanced remote sensing, satellite imagery analysis, and machine learning to provide comprehensive monitoring, yield prediction, and environmental assessment capabilities.',
+    results: [
+      'Real-time crop monitoring and yield prediction',
+      'Forest health assessment and deforestation tracking',
+      'Early detection of drought, flood, and pest conditions',
+      'Environmental change monitoring and sustainability reporting'
+    ],
+    technologies: ['Remote Sensing', 'Satellite Imagery', 'GEOINT', 'Machine Learning', 'Environmental Monitoring', 'Crop Analysis']
   }
 ]

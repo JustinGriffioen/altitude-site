@@ -43,12 +43,12 @@ export default function ProjectsPage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 via-orange-500/5 to-orange-400/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/10 via-primary-muted/5 to-primary-light/10" />
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <motion.div 
-              className="inline-flex items-center px-6 py-3 rounded-full bg-orange-600/20 text-orange-300 text-sm font-semibold tracking-wide border border-orange-500/30 mb-8"
+              className="inline-flex items-center px-6 py-3 rounded-full bg-primary-dark/20 text-primary-light text-sm font-semibold tracking-wide border border-primary-muted/30 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -56,13 +56,13 @@ export default function ProjectsPage() {
               Intelligence Projects
             </motion.div>
             
-            <h1 className="text-6xl lg:text-8xl font-black text-white leading-tight mb-8">
-              Real-World <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Intelligence</span>
+            <h1 className="text-4xl lg:text-6xl font-black text-white leading-tight mb-6">
+              Real-World <span className="bg-gradient-to-r from-primary-light to-primary-muted bg-clip-text text-transparent">Intelligence</span>
               <br />
-              <span className="text-5xl lg:text-6xl text-slate-300 font-bold">Case Studies</span>
+              <span className="text-3xl lg:text-4xl text-slate-300 font-bold">Case Studies</span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-slate-200 leading-relaxed max-w-4xl mx-auto font-medium mb-12">
+            <p className="text-lg lg:text-xl text-slate-200 leading-relaxed max-w-4xl mx-auto font-medium mb-8">
               Explore our intelligence projects and case studies showcasing real-world applications 
               of OSINT, GEOINT, and RF intelligence in mission-critical operations.
             </p>
@@ -75,7 +75,7 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Intelligence <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Projects</span> & Case Studies
+              Intelligence <span className="bg-gradient-to-r from-primary-light to-primary-muted bg-clip-text text-transparent">Projects</span> & Case Studies
             </h2>
             <p className="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
               Our intelligence teams have supported operations across defense, security, commercial, and humanitarian sectors worldwide.
@@ -85,7 +85,7 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project, index) => (
               <ScrollReveal key={project.id} direction="up" delay={index * 0.1}>
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-orange-500 group overflow-hidden">
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-primary-muted group overflow-hidden">
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src={project.image}
@@ -95,7 +95,7 @@ export default function ProjectsPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-orange-600 text-white text-sm font-semibold rounded-full">
+                      <span className="px-3 py-1 bg-primary-dark text-white text-sm font-semibold rounded-full">
                         {project.category}
                       </span>
                     </div>
@@ -108,36 +108,36 @@ export default function ProjectsPage() {
                   <CardBody className="p-8">
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="flex items-center space-x-2">
-                        <Calendar className="w-4 h-4 text-orange-400" />
+                        <Calendar className="w-4 h-4 text-primary-light" />
                         <span className="text-sm text-slate-300">{project.date}</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Users className="w-4 h-4 text-orange-400" />
+                        <Users className="w-4 h-4 text-primary-light" />
                         <span className="text-sm text-slate-300">{project.team}</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <MapPin className="w-4 h-4 text-orange-400" />
+                        <MapPin className="w-4 h-4 text-primary-light" />
                         <span className="text-sm text-slate-300">{project.location}</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Target className="w-4 h-4 text-orange-400" />
+                        <Target className="w-4 h-4 text-primary-light" />
                         <span className="text-sm text-slate-300">{project.duration}</span>
                       </div>
                     </div>
 
                     <div className="space-y-4 mb-6">
                       <div>
-                        <h4 className="text-sm font-semibold text-orange-300 mb-2">Challenge</h4>
+                        <h4 className="text-sm font-semibold text-primary-light mb-2">Challenge</h4>
                         <p className="text-slate-300 text-sm">{project.challenge}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-orange-300 mb-2">Solution</h4>
+                        <h4 className="text-sm font-semibold text-primary-light mb-2">Solution</h4>
                         <p className="text-slate-300 text-sm">{project.solution}</p>
                       </div>
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-orange-300 mb-3">Key Results</h4>
+                      <h4 className="text-sm font-semibold text-primary-light mb-3">Key Results</h4>
                       <div className="space-y-2">
                         {project.results.map((result, idx) => (
                           <div key={idx} className="flex items-center space-x-2">
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-orange-300 mb-3">Technologies Used</h4>
+                      <h4 className="text-sm font-semibold text-primary-light mb-3">Technologies Used</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, idx) => (
                           <span key={idx} className="px-3 py-1 bg-slate-600 text-slate-300 text-xs rounded-full">
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
                     </div>
 
                     <Link href={project.href}>
-                      <Button variant="ghost" size="sm" className="w-full group-hover:bg-orange-600 group-hover:text-white font-semibold">
+                      <Button variant="ghost" size="sm" className="w-full group-hover:bg-primary-dark group-hover:text-white font-semibold">
                         View Case Study
                         <ArrowRight className="ml-2" size={16} />
                       </Button>
@@ -185,7 +185,7 @@ export default function ProjectsPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/contact">
-                    <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white">
+                    <Button size="lg" className="bg-primary-dark hover:bg-primary-muted text-white">
                       Discuss Your Project
                       <ArrowRight className="ml-2" size={16} />
                     </Button>
@@ -203,24 +203,24 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-orange-900 via-orange-800 to-orange-900 relative">
+      <section className="py-24 bg-gradient-to-br from-primary-dark via-primary-muted to-primary-dark relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal direction="up">
             <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Ready to Start Your <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Intelligence Project?</span>
+              Ready to Start Your <span className="bg-gradient-to-r from-primary-light to-primary-muted bg-clip-text text-transparent">Intelligence Project?</span>
             </h2>
             <p className="text-xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed">
               Contact our intelligence experts to discuss your specific requirements and get a customized solution for your mission.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/contact">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 text-xl px-12 py-4 font-semibold">
+                <Button size="lg" className="bg-white text-primary-dark hover:bg-gray-100 text-xl px-12 py-4 font-semibold">
                   Get Project Quote
                   <ArrowRight className="ml-3" size={20} />
                 </Button>
               </Link>
               <Link href="/services">
-                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-orange-600 text-xl px-12 py-4 font-semibold">
+                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-primary-dark text-xl px-12 py-4 font-semibold">
                   View Our Services
                 </Button>
               </Link>

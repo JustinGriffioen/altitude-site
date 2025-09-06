@@ -2,44 +2,78 @@
 /* Clean grey/blue palette with black/white text */
 
 :root {
-  /* Modern Color Palette - HSL based for better consistency */
+  /* Standardized Color Palette - Professional Intelligence Theme */
   
-  /* Background & Foreground - Dark Blue-Grey Theme */
-  --background: 220 25% 8%;
-  --foreground: 0 0% 98%;
+  /* Core Colors - Blue Palette - Image Inspired */
+  --blue-50: 220 100% 98%;
+  --blue-100: 220 100% 95%;
+  --blue-200: 220 100% 90%;
+  --blue-300: 220 100% 80%;
+  --blue-400: 220 100% 70%;
+  --blue-500: 220 100% 60%;
+  --blue-600: 220 100% 50%;
+  --blue-700: 220 100% 40%;
+  --blue-800: 220 100% 30%;
+  --blue-900: 220 100% 20%;
+  --blue-950: 220 100% 10%;
+  
+  /* Image Color Palette - Specific to design */
+  --muted-dark-blue: 220 8% 35%;         /* Upper section background - more grey-blue */
+  --darker-blue: 220 12% 18%;            /* ALTITUDE text, better contrast */
+  --pure-white: 0 0% 100%;               /* INTELLIGENCE text */
+  --very-dark-blue: 220 8% 10%;          /* Lower section, almost black with subtle blue hue */
+  --divider-blue: 220 8% 22%;            /* Divider line */
+  --text-muted: 220 6% 55%;              /* Muted text color */
+  
+  /* Grey Palette */
+  --grey-50: 0 0% 98%;
+  --grey-100: 0 0% 95%;
+  --grey-200: 0 0% 90%;
+  --grey-300: 0 0% 80%;
+  --grey-400: 0 0% 65%;
+  --grey-500: 0 0% 50%;
+  --grey-600: 0 0% 35%;
+  --grey-700: 0 0% 25%;
+  --grey-800: 0 0% 15%;
+  --grey-900: 0 0% 8%;
+  --grey-950: 0 0% 3%;
+  
+  /* Semantic Colors - Image Inspired */
+  --background: var(--very-dark-blue);
+  --foreground: var(--pure-white);
   
   /* Card */
-  --card: 220 25% 12%;
-  --card-foreground: 0 0% 98%;
+  --card: var(--muted-dark-blue);
+  --card-foreground: var(--pure-white);
   
   /* Popover */
-  --popover: 220 25% 12%;
-  --popover-foreground: 0 0% 98%;
+  --popover: var(--muted-dark-blue);
+  --popover-foreground: var(--pure-white);
   
-  /* Primary - Bright Blue */
-  --primary: 217 91% 60%;
-  --primary-foreground: 220 25% 8%;
+  /* Primary - Hero Dark Blue (ALTITUDE color) */
+  --primary: var(--darker-blue);
+  --primary-foreground: var(--pure-white);
   
-  /* Secondary - Dark Grey */
-  --secondary: 220 25% 15%;
-  --secondary-foreground: 0 0% 98%;
+  /* Secondary - Muted Dark Blue */
+  --secondary: var(--muted-dark-blue);
+  --secondary-foreground: var(--pure-white);
   
   /* Muted */
-  --muted: 220 25% 15%;
-  --muted-foreground: 220 13% 65%;
+  --muted: var(--muted-dark-blue);
+  --muted-foreground: var(--blue-300);
   
-  /* Accent - Bright Blue */
-  --accent: 217 91% 60%;
-  --accent-foreground: 220 25% 8%;
+  /* Accent - Muted Dark Blue (INTELLIGENCE background) */
+  --accent: var(--muted-dark-blue);
+  --accent-foreground: var(--pure-white);
   
   /* Destructive */
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive-foreground: var(--grey-50);
   
   /* Border & Input */
-  --border: 220 25% 20%;
-  --input: 220 25% 20%;
-  --ring: 217 91% 60%;
+  --border: var(--grey-700);
+  --input: var(--grey-700);
+  --ring: var(--blue-600);
   
   /* Radius */
   --radius: 0.5rem;
@@ -53,8 +87,8 @@
   --error-foreground: 210 40% 98%;
 
   /* Typography - Cool Tech Fonts */
-  --font-sans: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
-  --font-display: 'Orbitron', 'Exo 2', 'Rajdhani', 'Inter', system-ui, sans-serif;
+  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-orbitron), 'Exo 2', 'Rajdhani', 'Inter', system-ui, sans-serif;
 
   /* Font Sizes */
   --text-xs: 0.75rem;
@@ -199,6 +233,19 @@ body {
   line-height: var(--leading-tight);
   letter-spacing: 0.05em;
   font-size: 1.1em;
+}
+
+/* All headings use display font by default */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.025em;
+}
+
+/* Font display utility class */
+.font-display {
+  font-family: var(--font-display) !important;
 }
 
 /* Font weight utilities - using available weights only */
@@ -565,6 +612,35 @@ body {
     transform: translateY(0);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
+}
+
+/* Main Brand Color Utilities */
+.text-primary-dark {
+  color: hsl(var(--darker-blue));
+}
+
+.text-primary-light {
+  color: hsl(var(--pure-white));
+}
+
+.bg-primary-dark {
+  background-color: hsl(var(--darker-blue));
+}
+
+.bg-primary-light {
+  background-color: hsl(var(--pure-white));
+}
+
+.bg-primary-muted {
+  background-color: hsl(var(--muted-dark-blue));
+}
+
+.border-primary-dark {
+  border-color: hsl(var(--darker-blue));
+}
+
+.border-primary-light {
+  border-color: hsl(var(--pure-white));
 }
 
 /* Utility Classes */

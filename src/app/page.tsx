@@ -5,10 +5,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
 import { SITE_CONFIG, COMPANY_STATS, USE_CASES, TECHNOLOGIES } from '@/lib/constants'
 import Button from '@/components/ui/Button'
 import Card, { CardBody } from '@/components/ui/Card'
+import BeforeAfterSlider from '@/components/BeforeAfterSlider'
 
 // Dynamic imports for better code splitting
 const ScrollReveal = dynamic(() => import('@/components/ui/ScrollReveal'), {
@@ -22,754 +22,536 @@ const AnimatedCounter = dynamic(() => import('@/components/ui/AnimatedCounter'),
 })
 
 export default function Home() {
-  const [activeServiceType, setActiveServiceType] = useState<'virtual' | 'onsite'>('virtual')
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('before-after-section')
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-blue-500/5 to-blue-400/10" />
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-24">
         
-        {/* Hero Background Image */}
-        <div className="absolute inset-0 opacity-5">
-          <Image
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80"
-            alt="Space technology background"
-            fill
-            className="object-cover"
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-            quality={75}
-          />
+        {/* Subtle Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Subtle floating elements for depth - using neutral colors */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/2 rounded-full blur-3xl animate-pulse delay-2000"></div>
+          
+          {/* Additional floating elements for depth */}
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-white/2 rounded-full blur-2xl animate-pulse delay-500"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-white/1 rounded-full blur-2xl animate-pulse delay-1500"></div>
+          
+          {/* Tech grid overlay */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.1'%3E%3Cpath d='M0 0h100v100H0z'/%3E%3Cpath d='M0 0l100 100M100 0L0 100'/%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '50px 50px'
+            }}></div>
+          </div>
         </div>
+
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+        
+        {/* Hero Background Video */}
+        <div className="absolute inset-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            poster="https://cdn.prod.website-files.com/6878a7ecb2912d644f2f66c9%2F688caa1059f4367fc721508d_10915129-hd_3840_2160_30fps%20%281%29-poster-00001.jpg"
+          >
+            <source src="https://cdn.prod.website-files.com/6878a7ecb2912d644f2f66c9%2F688caa1059f4367fc721508d_10915129-hd_3840_2160_30fps%20%281%29-transcode.mp4" type="video/mp4" />
+            <source src="https://cdn.prod.website-files.com/6878a7ecb2912d644f2f66c9%2F688caa1059f4367fc721508d_10915129-hd_3840_2160_30fps%20%281%29-transcode.webm" type="video/webm" />
+          </video>
+        </div>
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90"></div>
+        
+        {/* Additional pattern overlays for texture */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+        <div className="absolute inset-0 opacity-15" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
+        
+        {/* Subtle overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-transparent to-slate-900/20"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
               className="space-y-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
             >
               <div className="space-y-6">
-                <motion.div 
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-600/20 text-blue-300 text-sm font-medium tracking-wide border border-blue-500/30"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  Intelligence-as-a-Service Platform
-                </motion.div>
                 
-                <h1 className="text-6xl lg:text-8xl font-black text-white leading-tight">
-                  Mission-Critical{' '}
-                  <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Intelligence</span>
+                <h1 className="text-6xl lg:text-8xl font-black text-white leading-tight font-display">
+                  Advanced{' '}
+                  <span className="text-accent font-display">Intelligence Solutions</span>
                   <br />
-                  <span className="text-5xl lg:text-6xl text-slate-300 font-bold">When It Matters Most</span>
+                  <span className="text-5xl lg:text-6xl text-slate-300 font-bold font-display">For Modern Operations</span>
                 </h1>
                 
                 <p className="text-xl lg:text-2xl text-slate-200 leading-relaxed max-w-2xl font-medium">
-                  Deploy advanced intelligence services in hours, not months. 
-                  Our flexible Intelligence-as-a-Service platform delivers real-time OSINT, 
-                  GEOINT, and RF intelligence for defense, security, and commercial operations worldwide.
+                  Deploy cutting-edge intelligence capabilities that adapt to your mission needs. Our comprehensive platform delivers real-time insights, advanced analytics, and actionable intelligence for organizations across all sectors.
                 </p>
               </div>
               
-                                        <div className="flex flex-col sm:flex-row gap-6">
-                            <Button size="lg" className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white shadow-lg">
-                              Book a Call
-                              <ArrowRight className="ml-2" size={20} />
-                            </Button>
-                            <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900">
-                              Learn More
-                            </Button>
-                          </div>
-                          
-                          {/* Key Value Propositions */}
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/20">
-                            <div className="flex items-center space-x-3">
-                              <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                <Clock className="text-green-400" size={20} />
-                              </div>
-                              <div>
-                                <p className="text-sm font-semibold text-white">24-48h Turnaround</p>
-                                <p className="text-xs text-slate-300">Rapid Intelligence Delivery</p>
-                              </div>
-                            </div>
-                            
-                            <div className="flex items-center space-x-3">
-                              <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                <Shield className="text-blue-400" size={20} />
-                              </div>
-                              <div>
-                                <p className="text-sm font-semibold text-white">GEO & Military Experts</p>
-                                <p className="text-xs text-slate-300">Defense Intelligence Professionals</p>
-                              </div>
-                            </div>
-                            
-                            <div className="flex items-center space-x-3">
-                              <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                                <BarChart3 className="text-purple-400" size={20} />
-                              </div>
-                              <div>
-                                <p className="text-sm font-semibold text-white">50+ Data Products</p>
-                                <p className="text-xs text-slate-300">Proven Track Record</p>
-                              </div>
-                            </div>
-                          </div>
-
-              {/* Enhanced Trust Indicators */}
-              <div className="grid grid-cols-3 gap-8 pt-12">
-                <div className="text-center">
-                  <AnimatedCounter 
-                    end={COMPANY_STATS.productsDelivered} 
-                    suffix="+" 
-                    className="text-4xl font-black text-blue-400"
-                    duration={2}
-                  />
-                  <div className="text-sm text-slate-300 font-medium tracking-wide">Intelligence Products Delivered</div>
-                </div>
-                <div className="text-center">
-                  <AnimatedCounter 
-                    end={COMPANY_STATS.activeTheaters} 
-                    suffix="+" 
-                    className="text-4xl font-black text-blue-300"
-                    duration={2}
-                    delay={0.2}
-                  />
-                  <div className="text-sm text-slate-300 font-medium tracking-wide">Active Theaters</div>
-                </div>
-                <div className="text-center">
-                  <AnimatedCounter 
-                    end={COMPANY_STATS.responseTime} 
-                    suffix="h" 
-                    className="text-4xl font-black text-blue-500"
-                    duration={2}
-                    delay={0.4}
-                  />
-                  <div className="text-sm text-slate-300 font-medium tracking-wide">Response Time</div>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Button size="lg" className="text-lg px-8 py-4 bg-slate-700 hover:bg-slate-600 text-white shadow-lg cursor-default">
+                  Book a Call
+                  <ArrowRight className="ml-2" size={20} />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="text-lg px-8 py-4 border-2 border-slate-300 text-slate-300 hover:bg-slate-300 hover:text-slate-900 cursor-pointer"
+                  onClick={scrollToNextSection}
+                >
+                  Learn More
+                </Button>
               </div>
-            </motion.div>
-
-            <motion.div 
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.3 }}
-            >
-              {/* Enhanced Dashboard Mockup */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl transform rotate-3 shadow-2xl"></div>
-                <div className="relative bg-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700">
-                <div className="space-y-6">
-                    <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-sm font-bold text-white tracking-wide">Live Operations</span>
-                      </div>
-                      <div className="text-xs text-gray-400 font-medium">Last updated: 2 min ago</div>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <Card className="p-4 bg-slate-800 border border-slate-700">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm font-bold text-slate-300 tracking-wide">Border Security</span>
-                          <span className="text-xs text-green-600 bg-green-900/20 px-2 py-1 rounded-full font-semibold border border-green-500/30">Active</span>
-                        </div>
-                        <div className="text-2xl font-black text-white mb-1">7 Detections</div>
-                        <div className="text-sm text-slate-400 font-medium">Northern Sector</div>
-                        <div className="mt-2 w-full bg-slate-700 rounded-full h-2">
-                          <div className="bg-green-500 h-2 rounded-full w-3/4"></div>
-                        </div>
-                      </Card>
-                      
-                      <Card className="p-4 bg-slate-800 border border-slate-700">
-                        <div className="flex items-center justify-between mb-3">
-                        <span className="text-sm font-bold text-slate-300 tracking-wide">Maritime Domain</span>
-                          <span className="text-xs text-yellow-600 bg-yellow-900/20 px-2 py-1 rounded-full font-semibold border border-yellow-500/30">Monitoring</span>
-                        </div>
-                        <div className="text-2xl font-black text-white mb-1">23 Vessels</div>
-                        <div className="text-sm text-slate-400 font-medium">Pacific Region</div>
-                        <div className="mt-2 w-full bg-slate-700 rounded-full h-2">
-                          <div className="bg-yellow-500 h-2 rounded-full w-2/3"></div>
-                        </div>
-                      </Card>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3 p-3 bg-red-900/20 rounded-lg border border-red-500/30">
-                        <AlertTriangle className="w-5 h-5 text-red-400" />
-                        <div className="flex-1">
-                          <div className="text-sm font-semibold text-red-300 tracking-wide">High Priority Alert</div>
-                          <div className="text-xs text-red-400">Unauthorized activity detected near critical infrastructure</div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center space-x-3 p-3 bg-blue-900/20 rounded-lg border border-blue-500/30">
-                        <MapPin className="w-5 h-5 text-blue-400" />
-                        <div className="flex-1">
-                          <div className="text-sm font-semibold text-blue-300 tracking-wide">Geospatial Update</div>
-                          <div className="text-xs text-blue-400">New satellite imagery processed for Sector 7</div>
-                        </div>
-                      </div>
-                    </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t border-slate-300/20">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-emerald-400" size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Rapid Deployment</p>
+                    <p className="text-xs text-slate-300">Quick Implementation</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-slate-500/20 rounded-lg flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-slate-400" size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Expert Team</p>
+                    <p className="text-xs text-slate-300">Industry Professionals</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center">
+                    <BarChart3 className="w-5 h-5 text-indigo-400" size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Proven Solutions</p>
+                    <p className="text-xs text-slate-300">Track Record of Success</p>
                   </div>
                 </div>
               </div>
+              
+
             </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          onClick={scrollToNextSection}
+        >
+          <motion.div
+            className="w-8 h-8 border-2 border-white/60 rounded-full flex items-center justify-center hover:border-white/80 transition-colors duration-300"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ArrowRight className="w-4 h-4 text-white/80 rotate-90" />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Before/After Intelligence Comparison */}
+      <section id="before-after-section" className="py-24 bg-muted-dark-blue relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-display">
+              Before vs <span className="text-accent">After Intelligence</span>
+            </h2>
+            <p className="text-xl text-grey-300 max-w-3xl mx-auto">
+              See the transformation from having no intelligence capabilities to deploying Intelligence-as-a-Service. 
+              Drag the slider to compare the before and after.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="max-w-4xl mx-auto">
+              <BeforeAfterSlider
+                beforeImage="https://cdn.prod.website-files.com/6878a7ecb2912d644f2f66c9/688a07bb738f23c69bbf2441_image%20(3)-min.png"
+                afterImage="https://cdn.prod.website-files.com/6878a7ecb2912d644f2f66c9/688a078c721494c9afb613e2_image%20(2)-min.png"
+                beforeAlt="Before - No intelligence capabilities"
+                afterAlt="After - Intelligence-as-a-Service deployed"
+                className="h-96 lg:h-[500px] rounded-2xl shadow-2xl"
+              />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={0.4}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
+              {/* Before: No Intelligence Capabilities */}
+              <div className="bg-red-900/20 rounded-2xl p-8 border border-red-500/30">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <AlertTriangle className="text-red-400" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white font-display">Before: No Intelligence</h3>
+                    <div className="w-12 h-1 bg-red-400 rounded-full mt-2"></div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <p className="text-grey-300 leading-relaxed text-lg">
+                    Operating without intelligence capabilities means:
+                  </p>
+                  <ul className="space-y-2 text-grey-300">
+                    <li className="flex items-start">
+                      <span className="text-red-400 mr-2">✗</span>
+                      <span>No insights or intelligence in-house</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-400 mr-2">✗</span>
+                      <span>High overhead and long development cycles</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-400 mr-2">✗</span>
+                      <span>Manual processes and guesswork</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-400 mr-2">✗</span>
+                      <span>Reactive decision making</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-red-400 mr-2">✗</span>
+                      <span>Limited situational awareness</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* After: Intelligence-as-a-Service */}
+              <div className="bg-green-900/20 rounded-2xl p-8 border border-green-500/30">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="text-green-400" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white font-display">After: Intelligence-as-a-Service</h3>
+                    <div className="w-12 h-1 bg-green-400 rounded-full mt-2"></div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <p className="text-grey-300 leading-relaxed text-lg">
+                    Deploy Intelligence-as-a-Service and get:
+                  </p>
+                  <ul className="space-y-2 text-grey-300">
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>We build your solution within your systems/operations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>Deploy in no-time with real-time dashboards</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>Custom platform tailored to your needs</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>Optional ongoing support and maintenance</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-400 mr-2">✓</span>
+                      <span>Zero overhead, instant intelligence</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+
+      {/* Why Choose Us - Moved up for better flow */}
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <h2 className="text-5xl font-black text-white mb-6 font-display">
+              Why Choose <span className="text-accent">Altitude Intelligence</span>
+            </h2>
+            <p className="text-xl text-grey-300 max-w-4xl mx-auto leading-relaxed font-medium">
+              Flexible Intelligence-as-a-Service that adapts to your mission needs
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <ScrollReveal direction="up" delay={0.1}>
+              <Card className="h-full bg-grey-800/50 border-grey-700 hover:border-primary-500 transition-all duration-300">
+                <CardBody className="p-6 text-center">
+                  <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <Clock className="text-white" size={28} />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-4">On-Demand Expertise</h4>
+                  <p className="text-grey-300">Use our team only when you need us. No fixed commitments or long-term contracts.</p>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={0.2}>
+              <Card className="h-full bg-grey-800/50 border-grey-700 hover:border-primary-500 transition-all duration-300">
+                <CardBody className="p-6 text-center">
+                  <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <Settings className="text-white" size={28} />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-4">Flexible Deliverables</h4>
+                  <p className="text-grey-300">We deliver insights in the format you need—dashboards, PDF reports, map overlays, or structured data.</p>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={0.3}>
+              <Card className="h-full bg-grey-800/50 border-grey-700 hover:border-primary-500 transition-all duration-300">
+                <CardBody className="p-6 text-center">
+                  <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <Zap className="text-white" size={28} />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-4">Mission-Timed</h4>
+                  <p className="text-grey-300">Whether you need 24-hour turnaround or ongoing monitoring, our timelines adapt to operational tempo.</p>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={0.4}>
+              <Card className="h-full bg-grey-800/50 border-grey-700 hover:border-primary-500 transition-all duration-300">
+                <CardBody className="p-6 text-center">
+                  <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center mx-auto mb-6">
+                    <Layers className="text-white" size={28} />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-4">Integrated Workflow</h4>
+                  <p className="text-grey-300">We can plug into your existing processes, tasking platforms, and communication tools.</p>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Mission-Critical Use Cases */}
-      <section className="py-24 bg-slate-900 relative">
-        {/* Background Image */}
-        <div className="absolute inset-0 opacity-5">
-          <Image
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-            alt="Military operations background"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            quality={60}
-          />
-        </div>
-        
+      {/* Our Experience - Moved up for credibility */}
+      <section className="py-24 bg-grey-800 relative">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="up" className="text-center mb-20">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-red-900/20 text-red-300 text-sm font-semibold tracking-wide border border-red-500/30 mb-6">
-              Mission-Critical Operations
-            </div>
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Intelligence</span> Solutions for{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Real-World Operations</span>
-            </h2>
-            <p className="text-xl text-slate-200 max-w-4xl mx-auto leading-relaxed font-medium">
-              From border security intelligence to crisis response, our intelligence services are deployed 
-              in the world's most challenging environments where accuracy and speed save lives. 
-              Specializing in OSINT, GEOINT, and RF intelligence analysis.
-            </p>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {USE_CASES.slice(0, 6).map((useCase, index) => (
-              <ScrollReveal key={useCase.id} direction="up" delay={index * 0.1}>
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 group bg-slate-800 border-2 border-slate-700 hover:border-blue-500">
-                  <CardBody className="p-8">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="text-right">
-                        <div className="text-sm text-gray-300 font-medium tracking-wide">Sectors</div>
-                        <div className="text-xs text-gray-400 font-medium">{useCase.sectors.join(', ')}</div>
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-2xl font-black text-white mb-4 group-hover:text-primary-400 transition-colors font-display">
-                      {useCase.title}
-                    </h3>
-                    
-                    <p className="text-gray-200 mb-6 leading-relaxed font-medium">
-                      {useCase.description}
-                    </p>
-                    
-                    <div className="space-y-3">
-                      {useCase.features.slice(0, 3).map((feature, idx) => (
-                        <div key={idx} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-300 font-medium">{feature}</span>
-                        </div>
-                      ))}
-          </div>
-
-                    <div className="mt-6 pt-6 border-t border-primary-700">
-                      <Button variant="ghost" size="sm" className="w-full group-hover:bg-primary-700 group-hover:text-white font-semibold tracking-wide">
-                        Learn More
-                        <ArrowRight className="ml-2" size={16} />
-                      </Button>
-                  </div>
-                  </CardBody>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Blog & Projects Overview */}
-      <section className="py-24 bg-slate-800 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Latest <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Insights</span> & <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Projects</span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-display">
+              OUR EXPERIENCE
             </h2>
-            <p className="text-xl text-slate-200 max-w-3xl mx-auto">
-              Stay updated with the latest intelligence trends, case studies, and insights from our team of experts.
-            </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Blog Section */}
-            <ScrollReveal direction="left" delay={0.2}>
-              <div className="bg-slate-700 rounded-2xl p-8 border border-slate-600">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                    <BarChart3 className="text-white" size={20} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Latest Blog Posts</h3>
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="text-lg font-semibold text-white mb-2">OSINT Trends 2024: What's Next in Open Source Intelligence</h4>
-                    <p className="text-slate-300 text-sm mb-3">Explore the latest developments in OSINT technology and methodologies that are shaping the future of intelligence gathering.</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-400">December 2024</span>
-                      <Link href="/blog/osint-trends-2024" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                        Read More →
-                      </Link>
-                    </div>
-                  </div>
-                  
-                  <div className="border-l-4 border-green-500 pl-4">
-                    <h4 className="text-lg font-semibold text-white mb-2">GEOINT Analysis: Satellite Imagery Processing Techniques</h4>
-                    <p className="text-slate-300 text-sm mb-3">Learn about advanced satellite imagery analysis methods used in modern intelligence operations.</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-400">November 2024</span>
-                      <Link href="/blog" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                        Read More →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-slate-600">
-                  <Link href="/blog" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                    View All Posts
-                    <ArrowRight className="ml-2" size={16} />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Projects Section */}
-            <ScrollReveal direction="right" delay={0.4}>
-              <div className="bg-slate-700 rounded-2xl p-8 border border-slate-600">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                    <Shield className="text-white" size={20} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Recent Projects</h3>
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="border-l-4 border-orange-500 pl-4">
-                    <h4 className="text-lg font-semibold text-white mb-2">Border Security Enhancement - Mexico-US Border</h4>
-                    <p className="text-slate-300 text-sm mb-3">Deployed multi-source intelligence fusion to identify smuggling routes and staging areas in remote desert regions.</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-400">Defense & Security</span>
-                      <Link href="/projects" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                        View Details →
-                      </Link>
-                    </div>
-                  </div>
-                  
-                  <div className="border-l-4 border-purple-500 pl-4">
-                    <h4 className="text-lg font-semibold text-white mb-2">Maritime Domain Awareness - Gulf of Aden</h4>
-                    <p className="text-slate-300 text-sm mb-3">Implemented RF signal detection and satellite imagery analysis to track dark vessels in high-risk waters.</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-400">Maritime Security</span>
-                      <Link href="/projects" className="text-blue-400 hover:text-blue-300 text-sm font-medium">
-                        View Details →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-slate-600">
-                  <Link href="/projects" className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                    View All Projects
-                    <ArrowRight className="ml-2" size={16} />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Types Toggle Section */}
-      <section className="py-24 bg-slate-800 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="up" className="text-center mb-16">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600/20 text-blue-300 text-sm font-semibold tracking-wide border border-blue-500/30 mb-6">
-              Flexible Service Delivery
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Choose Your <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Intelligence Service</span> Format
-            </h2>
-            <p className="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
-              Deploy intelligence capabilities in the format that works best for your organization and operational requirements.
-            </p>
-          </ScrollReveal>
-
-          {/* Service Type Toggle */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-slate-700 rounded-2xl p-2 border border-slate-600">
-              <div className="flex relative">
-                <motion.div
-                  className="absolute top-2 bottom-2 bg-blue-600 rounded-xl shadow-lg"
-                  initial={false}
-                  animate={{
-                    x: activeServiceType === 'virtual' ? 0 : '100%',
-                    width: activeServiceType === 'virtual' ? 'calc(50% - 4px)' : 'calc(50% - 4px)'
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <ScrollReveal direction="up" delay={0.1}>
+              <div className="text-center">
+                <AnimatedCounter 
+                  end={COMPANY_STATS.productsDelivered} 
+                  suffix="+" 
+                  className="text-5xl font-black text-primary-muted mb-4"
+                  duration={2}
                 />
-                <button 
-                  onClick={() => setActiveServiceType('virtual')}
-                  className={`relative px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 z-10 ${
-                    activeServiceType === 'virtual' 
-                      ? 'text-white' 
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                >
-                  Virtual Intelligence
-                </button>
-                <button 
-                  onClick={() => setActiveServiceType('onsite')}
-                  className={`relative px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 z-10 ${
-                    activeServiceType === 'onsite' 
-                      ? 'text-white' 
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                >
-                  On-Site Operations
-                </button>
+                <div className="text-lg text-grey-400 font-medium">intelligence products delivered to government, defense, and commercial clients</div>
               </div>
-            </div>
-          </div>
+            </ScrollReveal>
 
-          {/* Service Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activeServiceType === 'virtual' ? (
-              <>
-                {/* Virtual Intelligence Cards */}
-                <ScrollReveal direction="up" delay={0.1}>
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-blue-500 group">
-                    <CardBody className="p-8">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
-                          <Settings className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-blue-300 font-semibold">Virtual</div>
-                          <div className="text-xs text-slate-400">Remote Operations</div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-blue-400 transition-colors">
-                        Real-Time Intelligence
-                      </h3>
-                      
-                      <p className="text-slate-200 mb-6 leading-relaxed">
-                        Deploy intelligence capabilities remotely with our secure, cloud-based platform. 
-                        Perfect for distributed teams and rapid response scenarios.
-                      </p>
-                      
-                      <div className="space-y-3 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">24/7 Remote Monitoring</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Secure Cloud Infrastructure</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Real-Time Data Fusion</span>
-                        </div>
-                      </div>
+            <ScrollReveal direction="up" delay={0.2}>
+              <div className="text-center">
+                <div className="text-5xl font-black text-primary-light mb-4">Every major active theatre</div>
+                <div className="text-lg text-grey-400 font-medium">Operational support across Europe, Middle East, Africa, Asia, and North America</div>
+              </div>
+            </ScrollReveal>
 
-                      <div className="mt-6 pt-6 border-t border-slate-600">
-                        <div className="text-3xl font-black text-white mb-2">$850</div>
-                        <div className="text-sm text-slate-400 mb-4">Starting at per session</div>
-                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-blue-600 group-hover:text-white font-semibold">
-                          Learn More
-                          <ArrowRight className="ml-2" size={16} />
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.2}>
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-green-500 group relative">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                        Most Popular
-                      </div>
-                    </div>
-                    <CardBody className="p-8 pt-12">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
-                          <Zap className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-green-300 font-semibold">Virtual</div>
-                          <div className="text-xs text-slate-400">Live Analysis</div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-green-400 transition-colors">
-                        Live Intelligence Briefings
-                      </h3>
-                      
-                      <p className="text-slate-200 mb-6 leading-relaxed">
-                        Interactive virtual briefings with our intelligence analysts. Get real-time 
-                        analysis and recommendations for your operational requirements.
-                      </p>
-                      
-                      <div className="space-y-3 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Live Expert Analysis</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Interactive Q&A Sessions</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Custom Intelligence Reports</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-6 pt-6 border-t border-slate-600">
-                        <div className="text-3xl font-black text-white mb-2">$1,200</div>
-                        <div className="text-sm text-slate-400 mb-4">Starting at per briefing</div>
-                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-green-600 group-hover:text-white font-semibold">
-                          Learn More
-                          <ArrowRight className="ml-2" size={16} />
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.3}>
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-purple-500 group">
-                    <CardBody className="p-8">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
-                          <Layers className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-purple-300 font-semibold">Virtual</div>
-                          <div className="text-xs text-slate-400">Platform Access</div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-purple-400 transition-colors">
-                        Intelligence Platform
-                      </h3>
-                      
-                      <p className="text-slate-200 mb-6 leading-relaxed">
-                        Self-service access to our intelligence platform with advanced analytics, 
-                        data visualization, and automated reporting capabilities.
-                      </p>
-                      
-                      <div className="space-y-3 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Self-Service Analytics</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Automated Reports</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">API Integration</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-6 pt-6 border-t border-slate-600">
-                        <div className="text-3xl font-black text-white mb-2">$2,500</div>
-                        <div className="text-sm text-slate-400 mb-4">Monthly subscription</div>
-                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-purple-600 group-hover:text-white font-semibold">
-                          Learn More
-                          <ArrowRight className="ml-2" size={16} />
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </ScrollReveal>
-              </>
-            ) : (
-              <>
-                {/* On-Site Operations Cards */}
-                <ScrollReveal direction="up" delay={0.1}>
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-blue-500 group">
-                    <CardBody className="p-8">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
-                          <Shield className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-blue-300 font-semibold">On-Site</div>
-                          <div className="text-xs text-slate-400">Field Deployment</div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-blue-400 transition-colors">
-                        Deployed Intelligence
-                      </h3>
-                      
-                      <p className="text-slate-200 mb-6 leading-relaxed">
-                        Our expert analysts deploy directly to your location with specialized equipment 
-                        and real-time intelligence capabilities for mission-critical operations.
-                      </p>
-                      
-                      <div className="space-y-3 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Expert Field Analysts</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Specialized Equipment</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Direct Integration</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-6 pt-6 border-t border-slate-600">
-                        <div className="text-3xl font-black text-white mb-2">$1,450</div>
-                        <div className="text-sm text-slate-400 mb-4">Starting at per deployment</div>
-                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-blue-600 group-hover:text-white font-semibold">
-                          Learn More
-                          <ArrowRight className="ml-2" size={16} />
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.2}>
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-green-500 group relative">
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                        Most Popular
-                      </div>
-                    </div>
-                    <CardBody className="p-8 pt-12">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
-                          <MapPin className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-green-300 font-semibold">On-Site</div>
-                          <div className="text-xs text-slate-400">Strategic Location</div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-green-400 transition-colors">
-                        Strategic Intelligence Hub
-                      </h3>
-                      
-                      <p className="text-slate-200 mb-6 leading-relaxed">
-                        Establish a dedicated intelligence operations center at your facility with 
-                        our team of analysts and cutting-edge technology infrastructure.
-                      </p>
-                      
-                      <div className="space-y-3 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Dedicated Operations Center</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">24/7 On-Site Team</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Custom Infrastructure</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-6 pt-6 border-t border-slate-600">
-                        <div className="text-3xl font-black text-white mb-2">$5,000</div>
-                        <div className="text-sm text-slate-400 mb-4">Monthly setup</div>
-                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-green-600 group-hover:text-white font-semibold">
-                          Learn More
-                          <ArrowRight className="ml-2" size={16} />
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.3}>
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-purple-500 group">
-                    <CardBody className="p-8">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
-                          <Layers className="text-white" size={24} />
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm text-purple-300 font-semibold">On-Site</div>
-                          <div className="text-xs text-slate-400">Training & Support</div>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-black text-white mb-4 group-hover:text-purple-400 transition-colors">
-                        Intelligence Training
-                      </h3>
-                      
-                      <p className="text-slate-200 mb-6 leading-relaxed">
-                        Comprehensive on-site training programs to build your team's intelligence 
-                        capabilities and establish best practices for ongoing operations.
-                      </p>
-                      
-                      <div className="space-y-3 mb-6">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Hands-On Training</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Certification Programs</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
-                          <span className="text-sm text-slate-300">Ongoing Support</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-6 pt-6 border-t border-slate-600">
-                        <div className="text-3xl font-black text-white mb-2">$3,500</div>
-                        <div className="text-sm text-slate-400 mb-4">Per training program</div>
-                        <Button variant="ghost" size="sm" className="w-full group-hover:bg-purple-600 group-hover:text-white font-semibold">
-                          Learn More
-                          <ArrowRight className="ml-2" size={16} />
-                        </Button>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </ScrollReveal>
-              </>
-            )}
+            <ScrollReveal direction="up" delay={0.3}>
+              <div className="text-center">
+                <div className="text-5xl font-black text-primary-dark mb-4">Canada, U.S., and Europe</div>
+                <div className="text-lg text-grey-400 font-medium">Clients including national security, public safety, and infrastructure sectors</div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Technology & Capabilities */}
+      {/* Key Use Cases - Moved up for better flow */}
+      <section className="py-24 bg-grey-900 relative">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 font-display">
+              KEY USE CASES
+            </h2>
+            <p className="text-xl text-grey-200 max-w-4xl mx-auto">
+              From border security to corporate risk, our intelligence products solve critical problems across sectors and scenarios.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <ScrollReveal direction="left" delay={0.1}>
+              <Card className="h-full bg-grey-800 border-2 border-grey-700 hover:border-primary-muted group transition-all duration-300">
+                <CardBody className="p-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center">
+                      <Shield className="text-white" size={28} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white font-display">Illicit Cross-Border Activity Monitoring</h3>
+                  </div>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-200">Detect unregistered trails, disturbed ground, and forward staging sites</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-200">Use RF and GEOINT to track vehicle or foot movement across borders</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-200">Identify smuggling corridors and compounds</p>
+                    </div>
+                  </div>
+                  <div className="bg-green-900/20 rounded-lg p-4 border border-green-500/30">
+                    <p className="text-sm text-green-300 font-semibold mb-2">✓ Real Result:</p>
+                    <p className="text-sm text-grey-300">85% increase in detection accuracy for Mexico-US border operations, enabling focused resource deployment.</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.2}>
+              <Card className="h-full bg-grey-800 border-2 border-grey-700 hover:border-primary-muted group transition-all duration-300">
+                <CardBody className="p-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center">
+                      <MapPin className="text-white" size={28} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white font-display">Maritime Domain Awareness</h3>
+                  </div>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Track dark vessels using RF signal detection without AIS</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Monitor suspicious movements near ports, coasts, or shipping lanes</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Identify staging behavior before illicit maritime operations</p>
+                    </div>
+                  </div>
+                  <div className="bg-green-900/20 rounded-lg p-4 border border-green-500/30">
+                    <p className="text-sm text-green-300 font-semibold mb-2">✓ Real Result:</p>
+                    <p className="text-sm text-grey-300">Successfully tracked 12 suspicious vessels in Gulf of Aden over 3 months, providing actionable intelligence to maritime authorities.</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="left" delay={0.3}>
+              <Card className="h-full bg-grey-800 border-2 border-grey-700 hover:border-primary-muted group transition-all duration-300">
+                <CardBody className="p-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center">
+                      <AlertTriangle className="text-white" size={28} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white font-display">Critical Infrastructure Protection</h3>
+                  </div>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Detect unusual ground activity near pipelines, power stations, or airfields</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">RF monitoring for unauthorized drone or communication devices</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Device signal tracking to detect reconnaissance or insider threats</p>
+                    </div>
+                  </div>
+                  <div className="bg-green-900/20 rounded-lg p-4 border border-green-500/30">
+                    <p className="text-sm text-green-300 font-semibold mb-2">✓ Real Result:</p>
+                    <p className="text-sm text-grey-300">Detected 3 potential security incidents before escalation, enabling proactive response measures for power station protection.</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.4}>
+              <Card className="h-full bg-grey-800 border-2 border-grey-700 hover:border-primary-muted group transition-all duration-300">
+                <CardBody className="p-8">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-16 h-16 bg-primary-dark rounded-xl flex items-center justify-center">
+                      <BarChart3 className="text-white" size={28} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white font-display">Corporate Risk & Geopolitical Intelligence</h3>
+                  </div>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Monitor high-risk supply chains and trade routes</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Detect activity near assets in conflict zones</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-primary-muted rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-grey-300">Support M&A due diligence with multi-layered threat mapping</p>
+                    </div>
+                  </div>
+                  <div className="bg-green-900/20 rounded-lg p-4 border border-green-500/30">
+                    <p className="text-sm text-green-300 font-semibold mb-2">✓ Real Result:</p>
+                    <p className="text-sm text-grey-300">Identified 5 high-risk supply chain routes and provided alternatives, reducing operational risk by 60% for global corporation.</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* IaaS Section - Moved down for better flow */}
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <ScrollReveal direction="up">
+              <h2 className="text-5xl font-black text-white mb-6 font-display">
+                What is IaaS?
+              </h2>
+              <h3 className="text-3xl font-bold text-primary-light mb-8 font-display">
+                Actionable Intel. Anytime.
+              </h3>
+              <p className="text-xl text-grey-300 leading-relaxed max-w-4xl mx-auto mb-8">
+                Intelligence-as-a-Service (IaaS) is our flexible model for delivering high-impact intelligence products tailored to your mission needs—without the overhead of building an in-house intelligence team. Whether you require rapid response reporting, persistent monitoring, or specialized targeting support, our IaaS model ensures you receive timely, actionable intelligence in the format you need, when you need it.
+              </p>
+              <p className="text-lg text-grey-400 leading-relaxed max-w-3xl mx-auto">
+                We provide unclassified, multi-source analysis fused across geospatial, open-source, RF, and behavioral data to support operations, planning, and decision-making.
+              </p>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology & Capabilities - Moved down for better flow */}
       <section className="py-24 bg-primary-800 relative">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10">
@@ -790,7 +572,7 @@ export default function Home() {
             </div>
             <h2 className="text-5xl lg:text-6xl font-black text-white mb-6 font-display">
               Powered by{' '}
-              <span className="gradient-text">Cutting-Edge Technology</span>
+              <span className="text-accent">Cutting-Edge Technology</span>
             </h2>
             <p className="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-medium">
               Our intelligence platform combines advanced AI, real-time data fusion, 
@@ -849,105 +631,36 @@ export default function Home() {
               ))}
             </div>
           </ScrollReveal>
-        </div>
-      </section>
 
-      {/* Quick Quote Form Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="up" className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-6 font-display">
-              Get Your <span className="gradient-text">Intelligence Services Quote</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Ready to enhance your intelligence capabilities? Get a free consultation 
-              and quote for OSINT services, GEOINT analysis, and intelligence consulting.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={0.2}>
-            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="inquiry-type" className="block text-sm font-medium text-gray-700 mb-2">
-                    What would you like to do?
-                  </label>
-                  <select
-                    id="inquiry-type"
-                    name="inquiry-type"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                  >
-                    <option value="quote">Get a Quote</option>
-                    <option value="contact">Contact Us</option>
-                  </select>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                      placeholder="john@company.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company/Organization *
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                    placeholder="Your Company"
+          {/* Partners Section */}
+          <ScrollReveal direction="up" className="text-center mt-16">
+            <h3 className="text-3xl font-black text-white mb-8 font-display">Trusted Partners</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center">
+              {[
+                { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
+                { name: 'Amazon Web Services', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
+                { name: 'Google Cloud', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg' },
+                { name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
+                { name: 'Oracle', logo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg' },
+                { name: 'Salesforce', logo: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg' }
+              ].map((partner, index) => (
+                <motion.div
+                  key={partner.name}
+                  className="flex items-center justify-center p-4 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    width={80}
+                    height={40}
+                    className="object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity duration-300"
                   />
-                </div>
-
-                <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
-                    Tell us about your intelligence requirements
-                  </label>
-                  <textarea
-                    id="description"
-                    name="description"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none"
-                    placeholder="Describe your intelligence needs, current challenges, or specific requirements..."
-                  />
-                </div>
-
-                <div className="text-center">
-                  <Button size="lg" className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white text-xl px-12 py-4 font-semibold tracking-wide shadow-xl">
-                    Get Free Quote
-                    <ArrowRight className="ml-3" size={20} />
-                  </Button>
-                  <p className="text-sm text-gray-500 mt-4">
-                    Free consultation • 24-hour turnaround time • No commitment required
-                  </p>
-                </div>
-              </form>
+                </motion.div>
+              ))}
             </div>
           </ScrollReveal>
         </div>
@@ -956,8 +669,7 @@ export default function Home() {
       {/* Enhanced CTA Section */}
       <section className="relative py-24 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-800 overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 via-accent-500/20 to-primary-400/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 via-primary-500/20 to-primary-400/20" />
         
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center">
@@ -967,21 +679,21 @@ export default function Home() {
             
             <h2 className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight font-display">
               Start Your Mission with{' '}
-              <span className="gradient-text">Altitude <span className="text-intelligence">Intelligence</span></span>
+              <span className="text-accent">Altitude Intelligence</span>
           </h2>
             
-            <p className="text-xl lg:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl lg:text-2xl text-slate-200 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
               Join the organizations worldwide that trust us with their most critical intelligence operations. 
               Deploy advanced capabilities in hours, not months.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-              <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100 text-xl px-16 py-8 font-semibold tracking-wide shadow-2xl">
-                Get Free Quote
+              <Button size="lg" className="bg-primary-dark hover:bg-primary-muted text-white text-xl px-16 py-8 font-semibold tracking-wide shadow-2xl">
+                Contact Us
                 <ArrowRight className="ml-3" size={24} />
               </Button>
-              <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 text-xl px-16 py-8 font-semibold tracking-wide">
-                Contact Us
+              <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-primary-dark text-xl px-16 py-8 font-semibold tracking-wide">
+                Learn More
               </Button>
             </div>
             
@@ -989,27 +701,27 @@ export default function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-4xl font-black text-white mb-2 font-display">
-                  <AnimatedCounter end={150} suffix="+" duration={2} />
+                  <AnimatedCounter end={100} suffix="+" duration={2} />
                 </div>
-                <div className="text-gray-200 text-sm font-medium tracking-wide">Intelligence Products</div>
+                <div className="text-slate-200 text-sm font-medium tracking-wide">Intelligence Products</div>
               </div>
               <div>
                 <div className="text-4xl font-black text-white mb-2 font-display">
                   <AnimatedCounter end={8} suffix="+" duration={2} delay={0.2} />
                 </div>
-                <div className="text-gray-200 text-sm font-medium tracking-wide">Active Theaters</div>
+                <div className="text-slate-200 text-sm font-medium tracking-wide">Active Theaters</div>
               </div>
               <div>
                 <div className="text-4xl font-black text-white mb-2 font-display">
                   <AnimatedCounter end={24} suffix="h" duration={2} delay={0.4} />
                 </div>
-                <div className="text-gray-200 text-sm font-medium tracking-wide">Response Time</div>
+                <div className="text-slate-200 text-sm font-medium tracking-wide">Response Time</div>
               </div>
               <div>
                 <div className="text-4xl font-black text-white mb-2 font-display">
                   <AnimatedCounter end={12} suffix="+" duration={2} delay={0.6} />
                 </div>
-                <div className="text-gray-200 text-sm font-medium tracking-wide">Countries Served</div>
+                <div className="text-slate-200 text-sm font-medium tracking-wide">Countries Served</div>
               </div>
             </div>
           </ScrollReveal>

@@ -8,6 +8,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Standardized Blue Palette
+        blue: {
+          50: "hsl(var(--blue-50))",
+          100: "hsl(var(--blue-100))",
+          200: "hsl(var(--blue-200))",
+          300: "hsl(var(--blue-300))",
+          400: "hsl(var(--blue-400))",
+          500: "hsl(var(--blue-500))",
+          600: "hsl(var(--blue-600))",
+          700: "hsl(var(--blue-700))",
+          800: "hsl(var(--blue-800))",
+          900: "hsl(var(--blue-900))",
+          950: "hsl(var(--blue-950))",
+        },
+        // Standardized Grey Palette
+        grey: {
+          50: "hsl(var(--grey-50))",
+          100: "hsl(var(--grey-100))",
+          200: "hsl(var(--grey-200))",
+          300: "hsl(var(--grey-300))",
+          400: "hsl(var(--grey-400))",
+          500: "hsl(var(--grey-500))",
+          600: "hsl(var(--grey-600))",
+          700: "hsl(var(--grey-700))",
+          800: "hsl(var(--grey-800))",
+          900: "hsl(var(--grey-900))",
+          950: "hsl(var(--grey-950))",
+        },
+        // Semantic Colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -16,6 +45,10 @@ const config: Config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          // Hero colors as main brand colors
+          dark: "hsl(var(--darker-blue))", // ALTITUDE text color
+          light: "hsl(var(--pure-white))", // INTELLIGENCE text color
+          muted: "hsl(var(--muted-dark-blue))", // INTELLIGENCE background
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -44,7 +77,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-orbitron)', 'Exo 2', 'Rajdhani', 'Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

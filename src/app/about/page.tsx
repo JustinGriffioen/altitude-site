@@ -30,17 +30,17 @@ export default function About() {
   return (
     <>
       {/* Hero Section */}
-      <section ref={heroRef} className="bg-gradient-to-br from-slate-50 to-blue-50 py-20">
+      <section ref={heroRef} className="bg-gradient-to-br from-very-dark-blue to-muted-dark-blue py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <motion.h1 
-              className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
+              className="text-5xl lg:text-6xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8 }}
             >
               About{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Altitude Intelligence</span>
+              <span className="bg-gradient-to-r from-primary-dark to-primary-muted bg-clip-text text-transparent">Altitude Intelligence</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-slate-600 leading-relaxed"
@@ -65,7 +65,7 @@ export default function About() {
               animate={missionInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Our Mission</h2>
+              <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 To democratize access to high-quality intelligence by providing flexible, 
                 on-demand Intelligence-as-a-Service solutions that eliminate the overhead 
@@ -76,34 +76,34 @@ export default function About() {
                 access to the intelligence insights they need to make informed decisions and 
                 protect their interests in an increasingly complex world.
               </p>
-              <Link href="/contact" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              <Link href="/contact" className="inline-flex items-center px-6 py-3 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-muted transition-colors">
                 Work With Us
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </motion.div>
 
             <motion.div
-              className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-2xl p-8 border border-slate-200"
+              className="bg-gradient-to-br from-grey-50 to-slate-50 rounded-2xl p-8 border border-slate-200"
               initial={{ opacity: 0, x: 50 }}
               animate={missionInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Our Vision</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Our Vision</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="text-blue-600 mt-1" size={20} />
+                  <CheckCircle className="text-primary-dark mt-1" size={20} />
                   <p className="text-slate-700">A world where intelligence is accessible, not exclusive</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="text-blue-600 mt-1" size={20} />
+                  <CheckCircle className="text-primary-dark mt-1" size={20} />
                   <p className="text-slate-700">Organizations empowered with real-time, actionable insights</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="text-blue-600 mt-1" size={20} />
+                  <CheckCircle className="text-primary-dark mt-1" size={20} />
                   <p className="text-slate-700">Flexible intelligence solutions that adapt to mission needs</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="text-blue-600 mt-1" size={20} />
+                  <CheckCircle className="text-primary-dark mt-1" size={20} />
                   <p className="text-slate-700">Zero overhead, maximum impact intelligence delivery</p>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function About() {
             animate={teamInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Our Team</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Our Team</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               We're intelligence professionals with decades of combined experience across 
               defense, security, and commercial sectors.
@@ -134,7 +134,7 @@ export default function About() {
                 title: 'Intelligence Analysts',
                 description: 'Former government and military intelligence analysts with expertise in OSINT, GEOINT, and multi-source intelligence fusion.',
                 icon: Shield,
-                color: 'from-blue-500 to-blue-600'
+                color: 'from-primary-dark to-primary-muted'
               },
               {
                 title: 'Technical Specialists',
@@ -158,7 +158,7 @@ export default function About() {
                 title: 'Humanitarian Specialists',
                 description: 'Experts in humanitarian operations, disaster response, and conflict zone intelligence support.',
                 icon: Users,
-                color: 'from-orange-500 to-orange-600'
+                color: 'from-primary-dark to-primary-muted'
               },
               {
                 title: 'Quality Assurance',
@@ -177,7 +177,7 @@ export default function About() {
                 <div className={`w-12 h-12 bg-gradient-to-r ${role.color} rounded-lg flex items-center justify-center mb-4`}>
                   <role.icon className="text-white" size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{role.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">{role.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{role.description}</p>
               </motion.div>
             ))}
@@ -194,7 +194,7 @@ export default function About() {
             animate={valuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Our Values</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Our Values</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               These core values guide everything we do, from how we approach intelligence 
               analysis to how we work with our clients.
@@ -231,10 +231,10 @@ export default function About() {
                 animate={valuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary-dark to-primary-muted rounded-full flex items-center justify-center mx-auto mb-4">
                   <value.icon className="text-white" size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{value.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">{value.title}</h3>
                 <p className="text-slate-600">{value.description}</p>
               </motion.div>
             ))}
@@ -243,7 +243,7 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className="py-20 bg-gradient-to-r from-primary-dark to-primary-muted">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2 
             className="text-4xl font-bold text-white mb-6"
@@ -255,7 +255,7 @@ export default function About() {
             Ready to Work With Our Team?
           </motion.h2>
           <motion.p 
-            className="text-xl text-blue-100 mb-8"
+            className="text-xl text-grey-300 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -270,7 +270,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center">
+            <Link href="/contact" className="bg-white text-primary-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center">
               Get Started Today
               <ArrowRight className="ml-2" size={20} />
             </Link>

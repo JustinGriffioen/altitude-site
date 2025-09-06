@@ -1,0 +1,10 @@
+[33md425814[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Fix responsive grid layouts and build issues
+[33m07c0920[m Fix Tiptap import errors for TextStyle and Color extensions
+[33mf328e34[m Add complete CRUD routes for blog, projects, and careers with list views and edit pages
+[33mab443b9[m Add cool fonts, fix navigation, create comprehensive CMS with Tiptap editor
+[33m92b50c3[m Complete dark theme redesign: add blog/projects overview, enhance footer, remove case-studies
+[33mf2ecb33[m Update design to dark blue-grey theme, simplify navbar, rename case-studies to projects
+[33me476735[m Fix Next.js config by removing problematic CSS optimization
+[33mf8f270c[m Fix all client components and metadata issues
+[33mcbf8d51[m Fix about page client component and metadata issues
+[33m4086433[m Fix vercel.json configuration for deployment

@@ -1,18 +1,21 @@
 /* Critical CSS - Above the fold styles only */
 
 :root {
-  /* Essential colors only */
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-gray-50: #f8fafc;
-  --color-gray-900: #0f172a;
-  --color-gray-300: #cbd5e1;
-  --color-accent-500: #f97316;
+  /* Essential colors - matches design-system.css */
+  --blue-600: 220 100% 50%;
+  --blue-700: 220 100% 40%;
+  --blue-800: 220 100% 30%;
+  --grey-50: 0 0% 98%;
+  --grey-900: 0 0% 8%;
+  --grey-300: 0 0% 80%;
+  --darker-blue: 220 25% 20%;
+  --muted-dark-blue: 220 15% 40%;
+  --very-dark-blue: 220 25% 12%;
+  --pure-white: 0 0% 100%;
   
   /* Essential fonts */
-  --font-sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-orbitron), 'Orbitron', system-ui, -apple-system, sans-serif;
+  --font-sans: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+  --font-display: 'Orbitron', 'Exo 2', 'Rajdhani', 'Inter', system-ui, sans-serif;
   
   /* Essential spacing */
   --space-4: 1rem;
@@ -40,8 +43,8 @@ html {
 body {
   font-family: var(--font-sans);
   line-height: 1.5;
-  color: var(--color-gray-900);
-  background-color: var(--color-gray-50);
+  color: hsl(var(--pure-white));
+  background-color: hsl(var(--very-dark-blue));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
@@ -59,14 +62,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Critical gradients */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-accent-500));
+  background: linear-gradient(135deg, hsl(var(--blue-600)), hsl(var(--darker-blue)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-bg-dark {
-  background: linear-gradient(135deg, var(--color-gray-900), var(--color-primary-800));
+  background: linear-gradient(135deg, hsl(var(--very-dark-blue)), hsl(var(--muted-dark-blue)));
 }
 
 /* Critical utility classes */
@@ -113,8 +116,8 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
-.text-gray-300 {
-  color: var(--color-gray-300);
+.text-grey-300 {
+  color: hsl(var(--grey-300));
 }
 
 .bg-cover {
@@ -136,6 +139,30 @@ h1, h2, h3, h4, h5, h6 {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gap-4 {
+  gap: var(--space-4);
+}
+
+.gap-6 {
+  gap: var(--space-6);
+}
+
+.gap-8 {
+  gap: var(--space-8);
+}
+
+.gap-12 {
+  gap: var(--space-12);
 }
 
 .gap-16 {
@@ -197,9 +224,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Critical responsive breakpoints */
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .sm\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
+  .sm\:px-6 {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
 @media (min-width: 1024px) {
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   
   .lg\:text-8xl {
@@ -213,16 +267,7 @@ h1, h2, h3, h4, h5, h6 {
   .lg\:text-2xl {
     font-size: 1.5rem;
   }
-}
-
-@media (min-width: 640px) {
-  .sm\:px-6 {
-    padding-left: var(--space-6);
-    padding-right: var(--space-6);
-  }
-}
-
-@media (min-width: 1024px) {
+  
   .lg\:px-8 {
     padding-left: var(--space-8);
     padding-right: var(--space-8);

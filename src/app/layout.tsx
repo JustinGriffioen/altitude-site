@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Orbitron, JetBrains_Mono } from 'next/font/google'
+import { Orbitron, Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import PerformanceMonitor from '@/components/PerformanceMonitor'
+import CookieConsent from '@/components/CookieConsent'
 
 const orbitron = Orbitron({ 
   subsets: ['latin'],
@@ -13,9 +14,9 @@ const orbitron = Orbitron({
   weight: ['400', '500', '600', '700', '800', '900'],
 })
 
-const jetbrainsMono = JetBrains_Mono({ 
+const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
+  variable: '--font-inter',
   display: 'swap',
   preload: true,
   weight: ['300', '400', '500', '600', '700'],
@@ -131,70 +132,9 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${orbitron.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${orbitron.variable} ${inter.variable}`}>
       <head>
-        {/* Critical CSS inline */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            :root {
-              --color-primary-600: #2563eb;
-              --color-primary-700: #1d4ed8;
-              --color-primary-800: #1e40af;
-              --color-gray-50: #f8fafc;
-              --color-gray-900: #0f172a;
-              --color-gray-300: #cbd5e1;
-              --color-accent-500: #f97316;
-              --font-sans: var(--font-jetbrains-mono), 'JetBrains Mono', 'Fira Code', monospace;
-              --font-display: var(--font-orbitron), 'Orbitron', 'Exo 2', system-ui, sans-serif;
-            }
-            * { box-sizing: border-box; }
-            html { scroll-behavior: smooth; font-size: 16px; }
-            body { font-family: var(--font-sans); line-height: 1.5; color: var(--color-gray-900); background-color: var(--color-gray-50); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; margin: 0; padding: 0; }
-            h1,h2,h3,h4,h5,h6 { font-family: var(--font-display); font-weight: 700; line-height: 1.25; letter-spacing: -0.025em; margin: 0; }
-            .gradient-text { background: linear-gradient(135deg, var(--color-primary-600), var(--color-accent-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-            .gradient-bg-dark { background: linear-gradient(135deg, var(--color-gray-900), var(--color-primary-800)); }
-            .min-h-screen { min-height: 100vh; }
-            .flex { display: flex; }
-            .items-center { align-items: center; }
-            .justify-center { justify-content: center; }
-            .relative { position: relative; }
-            .absolute { position: absolute; }
-            .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
-            .opacity-10 { opacity: 0.1; }
-            .opacity-20 { opacity: 0.2; }
-            .text-white { color: white; }
-            .text-gray-300 { color: var(--color-gray-300); }
-            .bg-cover { background-size: cover; }
-            .bg-center { background-position: center; }
-            .object-cover { object-fit: cover; }
-            .grid { display: grid; }
-            .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .gap-16 { gap: 4rem; }
-            .max-w-7xl { max-width: 80rem; }
-            .mx-auto { margin-left: auto; margin-right: auto; }
-            .px-4 { padding-left: 1rem; padding-right: 1rem; }
-            .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-            .text-6xl { font-size: 3.75rem; line-height: 1; }
-            .text-8xl { font-size: 6rem; line-height: 1; }
-            .text-5xl { font-size: 3rem; line-height: 1; }
-            .text-xl { font-size: 1.25rem; line-height: 1.75; }
-            .text-2xl { font-size: 1.5rem; line-height: 2; }
-            .space-y-8 > * + * { margin-top: 2rem; }
-            .space-y-6 > * + * { margin-top: 1.5rem; }
-            @media (min-width: 1024px) {
-              .lg\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-              .lg\\:text-8xl { font-size: 6rem; }
-              .lg\\:text-6xl { font-size: 3.75rem; }
-              .lg\\:text-2xl { font-size: 1.5rem; }
-            }
-            @media (min-width: 640px) {
-              .sm\\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-            }
-            @media (min-width: 1024px) {
-              .lg\\:px-8 { padding-left: 2rem; padding-right: 2rem; }
-            }
-          `
-        }} />
+        {/* Design system CSS is loaded via globals.css */}
         
         {/* Preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://cdn.loom.com" />
@@ -212,16 +152,24 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://client.crisp.chat" />
         <link rel="dns-prefetch" href="https://snap.licdn.com" />
         
+        {/* Favicon */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+        <link rel="manifest" href="/site.webmanifest" />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-white font-sans antialiased">
+      <body className="min-h-screen font-sans antialiased">
         <PerformanceMonitor />
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   )

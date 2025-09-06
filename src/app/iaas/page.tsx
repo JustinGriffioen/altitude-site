@@ -29,20 +29,20 @@ export default function IAAS() {
   return (
     <>
       {/* Hero Section */}
-      <section ref={heroRef} className="bg-gradient-to-br from-slate-50 to-blue-50 py-20">
+      <section ref={heroRef} className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-24 pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <motion.h1 
-              className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6"
+              className="text-5xl lg:text-6xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8 }}
             >
               Intelligence-as-a-Service{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">(IaaS)</span>
+              <span className="bg-gradient-to-r from-primary-light to-primary-muted bg-clip-text text-transparent">(IaaS)</span>
             </motion.h1>
             <motion.p 
-              className="text-2xl text-slate-600 mb-4"
+              className="text-2xl text-grey-200 mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -50,7 +50,7 @@ export default function IAAS() {
               Real Intelligence Services. Zero Overhead.
             </motion.p>
             <motion.p 
-              className="text-xl text-slate-600 mb-8"
+              className="text-xl text-grey-300 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -63,7 +63,7 @@ export default function IAAS() {
               animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Link href="/contact" className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              <Link href="/contact" className="inline-flex items-center px-6 py-3 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-muted transition-colors">
                 Book a Free Call
                 <ArrowRight className="ml-2" size={20} />
               </Link>
@@ -73,7 +73,7 @@ export default function IAAS() {
       </section>
 
       {/* Key Use Cases */}
-      <section ref={useCasesRef} id="use-cases" className="py-20 bg-white">
+      <section ref={useCasesRef} id="use-cases" className="py-20 bg-grey-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -81,8 +81,8 @@ export default function IAAS() {
             animate={useCasesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">KEY USE CASES</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-4">KEY USE CASES</h2>
+            <p className="text-xl text-grey-200 max-w-3xl mx-auto">
               From border security to corporate risk, our intelligence products solve critical problems 
               across sectors and scenarios.
             </p>
@@ -147,17 +147,17 @@ export default function IAAS() {
             ].map((useCase, index) => (
               <motion.div 
                 key={index} 
-                className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
+                className="bg-grey-800 rounded-xl p-6 shadow-sm border border-grey-700 hover:shadow-md hover:border-primary-muted transition-all"
                 initial={{ opacity: 0, y: 50 }}
                 animate={useCasesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <h3 className="text-xl font-semibold text-slate-900 mb-4">{useCase.title}</h3>
-                <p className="text-slate-600 mb-4">{useCase.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-4">{useCase.title}</h3>
+                <p className="text-grey-300 mb-4">{useCase.description}</p>
                 <ul className="space-y-2">
                   {useCase.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-slate-600">
-                      <span className="text-blue-600 mr-2 mt-1">🔹</span>
+                    <li key={idx} className="flex items-start text-sm text-grey-300">
+                      <span className="text-primary-muted mr-2 mt-1">🔹</span>
                       {feature}
                     </li>
                   ))}
@@ -169,7 +169,7 @@ export default function IAAS() {
       </section>
 
       {/* Our Experience */}
-      <section ref={experienceRef} className="py-20 bg-slate-50">
+      <section ref={experienceRef} className="py-20 bg-grey-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -177,7 +177,7 @@ export default function IAAS() {
             animate={experienceInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">OUR EXPERIENCE</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">OUR EXPERIENCE</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
@@ -197,13 +197,13 @@ export default function IAAS() {
             ].map((stat, index) => (
               <motion.div 
                 key={index}
-                className="bg-white rounded-xl p-8 shadow-sm border border-slate-200"
+                className="bg-grey-900 rounded-xl p-8 shadow-sm border border-grey-700"
                 initial={{ opacity: 0, y: 50 }}
                 animate={experienceInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <div className="text-4xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                <div className="text-lg text-slate-600">{stat.description}</div>
+                <div className="text-4xl font-bold text-primary-muted mb-2">{stat.number}</div>
+                <div className="text-lg text-grey-300">{stat.description}</div>
               </motion.div>
             ))}
           </div>
@@ -211,7 +211,7 @@ export default function IAAS() {
       </section>
 
       {/* Service Features */}
-      <section ref={featuresRef} className="py-20 bg-white">
+      <section ref={featuresRef} className="py-20 bg-grey-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center mb-16"
@@ -219,8 +219,8 @@ export default function IAAS() {
             animate={featuresInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Service Features</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-4">Service Features</h2>
+            <p className="text-xl text-grey-200 max-w-3xl mx-auto">
               Our Intelligence-as-a-Service platform delivers comprehensive intelligence solutions 
               with the flexibility and scalability you need.
             </p>
@@ -256,11 +256,11 @@ export default function IAAS() {
                 animate={featuresInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary-dark to-primary-muted rounded-full flex items-center justify-center mx-auto mb-4">
                   <feature.icon className="text-white" size={24} />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-600">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                <p className="text-grey-300">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -268,7 +268,7 @@ export default function IAAS() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className="py-20 bg-gradient-to-r from-primary-dark to-primary-muted">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h2 
             className="text-4xl font-bold text-white mb-6"
@@ -280,7 +280,7 @@ export default function IAAS() {
             Ready to Elevate Your Intelligence Capabilities?
           </motion.h2>
           <motion.p 
-            className="text-xl text-blue-100 mb-8"
+            className="text-xl text-grey-200 mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -295,7 +295,7 @@ export default function IAAS() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center">
+            <Link href="/contact" className="bg-white text-primary-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-grey-100 transition-colors inline-flex items-center">
               Get Started Today
               <ArrowRight className="ml-2" size={20} />
             </Link>

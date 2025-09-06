@@ -19,7 +19,7 @@ export default function JasperWildfirePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 via-orange-500/5 to-orange-400/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-blue-500/5 to-blue-400/10" />
         
         {/* Background Image */}
         <div className="absolute inset-0 opacity-20">
@@ -32,10 +32,10 @@ export default function JasperWildfirePage() {
           />
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <motion.div 
-              className="inline-flex items-center px-6 py-3 rounded-full bg-orange-600/20 text-orange-300 text-sm font-semibold tracking-wide border border-orange-500/30 mb-8"
+              className="inline-flex items-center px-6 py-3 rounded-full bg-blue-600/20 text-blue-300 text-sm font-semibold tracking-wide border border-blue-500/30 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -43,32 +43,32 @@ export default function JasperWildfirePage() {
               Crisis Response Intelligence
             </motion.div>
             
-            <h1 className="text-6xl lg:text-8xl font-black text-white leading-tight mb-8">
-              <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Jasper Wildfire</span>
+            <h1 className="text-4xl lg:text-6xl font-black text-white leading-tight mb-6">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Jasper Wildfire</span>
               <br />
-              <span className="text-5xl lg:text-6xl text-slate-300 font-bold">Intelligence Support</span>
+              <span className="text-3xl lg:text-4xl text-slate-300 font-bold">Intelligence Support</span>
             </h1>
             
-            <p className="text-xl lg:text-2xl text-slate-200 leading-relaxed max-w-4xl mx-auto font-medium mb-12">
+            <p className="text-lg lg:text-xl text-slate-200 leading-relaxed max-w-4xl mx-auto font-medium mb-8">
               Real-time intelligence support for the Jasper Wildfire response operations, providing critical 
               situational awareness and resource allocation intelligence during a rapidly evolving crisis.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-black text-orange-400 mb-2">2024</div>
+                <div className="text-3xl font-black text-blue-400 mb-2">2024</div>
                 <div className="text-sm text-slate-300">Year</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-black text-orange-400 mb-2">2 Weeks</div>
+                <div className="text-3xl font-black text-blue-400 mb-2">2 Weeks</div>
                 <div className="text-sm text-slate-300">Duration</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-black text-orange-400 mb-2">5</div>
+                <div className="text-3xl font-black text-blue-400 mb-2">5</div>
                 <div className="text-sm text-slate-300">Analysts</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-black text-orange-400 mb-2">24/7</div>
+                <div className="text-3xl font-black text-blue-400 mb-2">24/7</div>
                 <div className="text-sm text-slate-300">Support</div>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function JasperWildfirePage() {
             <ScrollReveal direction="left">
               <div>
                 <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-                  The <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Challenge</span>
+                  The <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Challenge</span>
                 </h2>
                 <p className="text-xl text-slate-200 leading-relaxed mb-8">
                   The Jasper Wildfire presented a rapidly evolving crisis requiring real-time intelligence 
@@ -93,21 +93,21 @@ export default function JasperWildfirePage() {
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <AlertTriangle className="w-6 h-6 text-orange-400 mt-1" />
+                    <AlertTriangle className="w-6 h-6 text-blue-400 mt-1" />
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Rapidly Changing Conditions</h3>
                       <p className="text-slate-300">Fire progression changed hourly, requiring constant monitoring and updates.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <MapPin className="w-6 h-6 text-orange-400 mt-1" />
+                    <MapPin className="w-6 h-6 text-blue-400 mt-1" />
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Critical Evacuation Decisions</h3>
                       <p className="text-slate-300">Real-time intelligence needed for evacuation route planning and timing.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Users className="w-6 h-6 text-orange-400 mt-1" />
+                    <Users className="w-6 h-6 text-blue-400 mt-1" />
                     <div>
                       <h3 className="text-lg font-semibold text-white mb-2">Resource Allocation</h3>
                       <p className="text-slate-300">Optimal deployment of firefighting resources based on threat assessment.</p>
@@ -119,7 +119,7 @@ export default function JasperWildfirePage() {
 
             <ScrollReveal direction="right">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-500 rounded-3xl transform rotate-3 shadow-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl transform rotate-3 shadow-2xl"></div>
                 <div className="relative bg-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700">
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
@@ -186,7 +186,7 @@ export default function JasperWildfirePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Our <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Intelligence Solution</span>
+              Our <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Intelligence Solution</span>
             </h2>
             <p className="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
               We deployed a comprehensive intelligence operation combining OSINT, GEOINT, and real-time monitoring 
@@ -216,12 +216,12 @@ export default function JasperWildfirePage() {
               }
             ].map((capability, index) => (
               <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-                <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-orange-500 group">
+                <Card className="h-full hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-blue-500 group">
                   <CardBody className="p-8">
-                    <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-500 transition-colors duration-300">
+                    <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-500 transition-colors duration-300">
                       <capability.icon className="text-white" size={32} />
                     </div>
-                    <h3 className="text-2xl font-black text-white mb-4 text-center group-hover:text-orange-400 transition-colors">
+                    <h3 className="text-2xl font-black text-white mb-4 text-center group-hover:text-blue-400 transition-colors">
                       {capability.title}
                     </h3>
                     <p className="text-slate-200 mb-6 leading-relaxed text-center">
@@ -248,7 +248,7 @@ export default function JasperWildfirePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Intelligence <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Results</span>
+              Intelligence <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Results</span>
             </h2>
             <p className="text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed">
               Our intelligence support provided critical information that directly impacted emergency response operations and community safety.
@@ -263,9 +263,9 @@ export default function JasperWildfirePage() {
               { metric: '50+', label: 'Intelligence Reports', description: 'Daily intelligence briefings provided' }
             ].map((result, index) => (
               <ScrollReveal key={index} direction="up" delay={index * 0.1}>
-                <Card className="text-center hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-orange-500 group">
+                <Card className="text-center hover:shadow-2xl transition-all duration-300 bg-slate-700 border-2 border-slate-600 hover:border-blue-500 group">
                   <CardBody className="p-8">
-                    <div className="text-4xl font-black text-orange-400 mb-4 group-hover:text-orange-300 transition-colors">
+                    <div className="text-4xl font-black text-blue-400 mb-4 group-hover:text-blue-300 transition-colors">
                       {result.metric}
                     </div>
                     <h3 className="text-xl font-bold text-white mb-2">{result.label}</h3>
@@ -335,24 +335,24 @@ export default function JasperWildfirePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-orange-900 via-orange-800 to-orange-900 relative">
+      <section className="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal direction="up">
             <h2 className="text-4xl lg:text-5xl font-black text-white mb-6">
-              Need <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Crisis Intelligence</span> Support?
+              Need <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">Crisis Intelligence</span> Support?
             </h2>
             <p className="text-xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed">
               Our intelligence teams are ready to provide rapid response support for emergency situations and crisis management operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/contact">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 text-xl px-12 py-4 font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-xl px-12 py-4 font-semibold">
                   Get Crisis Intelligence Quote
                   <ArrowRight className="ml-3" size={20} />
                 </Button>
               </Link>
               <Link href="/use-cases/crisis-response">
-                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-orange-600 text-xl px-12 py-4 font-semibold">
+                <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 text-xl px-12 py-4 font-semibold">
                   Learn About Crisis Response
                 </Button>
               </Link>
